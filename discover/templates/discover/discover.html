@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      <link rel="icon" href="{% static 'business/img/vibes.jpg' %}" type="image/jpg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'discover/discover.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/brands.min.js">
+
+  </script>
+    <meta charset="utf-8">
+    <title>Vibes | Discover</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="nav-bar">
+        <div class="logo">
+            <img src="{% static 'business/img/vibes.jpg' %}" alt="Vibes">
+        </div>
+
+            <a href="{% url 'profile:profile' %}">
+              <span class="fa fa-home"></span>
+
+            </a>
+
+
+            <a href="{% url 'groups:groups' %}">
+              <span class="fa fa-users"></span>
+
+            </a>
+
+            <a href="{% url 'messaging:display' %}">
+              <span class="fa fa-envelope"></span>
+
+            </a>
+
+
+            <a href="{% url 'business:business' %}">
+              <span class="fas fa-business-time"></span>
+            </a>
+
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-sm-8 col-md-8 col-lg-8 col-sm-8 search">
+          <input type="search" name="search" placeholder="search">
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 aroundyou">
+          <label>Around you</label>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-sm-7 col-md-7 col-lg-7 col-sm-7 search">
+
+          {% for user in users %}
+
+          <!-- card starts here -->
+
+            <div class="singleuser">
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-xm-12 col-sm-5 col-lg-4 col-xl-4 profile">
+                    <img src="/media/{{user.profilepic}}" class="card-img-top" alt="No image">
+                  </div>
+                  <div class="col-xm-12 col-sm-12 col-lg-8 col-xl-8 description">
+                    <label>
+                      <h2 class="suggestuser">{{user.username}}</h2>
+                    </label>
+
+                    <label>Followers {{user.follower}}</label>
+                    <label>Following {{user.follow}}</label>
+
+                    <div class="follow">
+                      <label class="fa fa-map-marker"> {{user.location}}</label>
+                      <label>Job {{user.hobby}}</label>
+                      <button type="button" name="button">
+                        <a href="{% url 'discover:followBot' user.uid %}">Follow</a>
+                      </button>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          <!-- card ends here -->
+
+          {% endfor %}
+
+        </div>
+
+
+        <div class="col-xs-12 col-sm-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+            <div class="card">
+
+              <!-- Loop through this div -->
+              {% for aroundyou in around %}
+
+              <div class="arounddescription">
+
+                <div class="user-img">
+                  <img src="/media/{{aroundyou.profilepic}}" alt="">
+                </div>
+
+                <div class="user-content">
+                  <h2>{{aroundyou.username}}</h2>
+                  <label>Followers {{aroundyou.follower}}</label>
+                  <label>Following {{aroundyou.follow}}</label>
+                  <label class="fa fa-map-marker"> {{aroundyou.location}}</label>
+                  <label>Job {{aroundyou.hobby}}</label>
+                  <button type="button" name="button">
+                    <a href="{% url 'discover:followBot' aroundyou.uid %}">Follow</a>
+                  </button>
+                </div>
+
+              </div>
+
+              {% endfor %}
+
+              <!-- End of individual dataset -->
+
+
+
+
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </body>
+</html>

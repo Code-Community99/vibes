@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vibes | Home</title>
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="{% static 'home/styles.css' %}">
+
+	<link rel="icon" href="{% static 'business/img/vibes.jpg' %}" type="image/jpg">
+</head>
+<body>
+	 <nav>
+
+<!---add other links here-->
+
+   <div class = "dropdown">
+<button class = "dropbtn"> Account</button>
+<div class="dropdown-menu">
+
+	{% if loginstatus %}
+		<a href="{% url 'login:logout' %}"> Log Out</a>
+
+	{% else %}
+		<a href="{% url 'login:login' %}">Login </a>
+		<a href="{% url 'signup:signup' %}"> Sign Up </a>
+	{% endif %}
+
+</div>
+</div>
+
+  </nav>
+  <div class = "LOGO">
+
+  </div>
+  <div class = "Desc">
+  <p>
+   <img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo">
+</p>
+<div class= "welcome">
+	<h3>
+		Welcome to vibes .
+	</h3>
+	<br>
+	<br>
+	</div>
+	<div class="Search">
+	 <input type="text" placeholder="Search on topics, find people and events" name="search" autocomplete="true">
+	</div>
+
+  <div class ="row">
+  	<div class ="column">
+  		<div class = "cardd"> <!--img src="public/images/image1.jpg" alt="image" id="profile" >--> <br>
+  		Join Groups and engage in hottest topics around you<br>
+  	<button class = "Learn"> Learn More</button>
+</div>
+  	</div>
+	<div class ="row">
+  	<div class ="column">
+  		<div class = "cardd">  <!--img src="public/images/239.jpg" alt="image" id="profile" vibes>--> <br>
+  		 You can buy quality products from people around you via vibes, the most effecial way to do small scale business<br>
+  		<button class = "Learn"> Learn More</button>
+</div>
+  	</div>
+  	<div class ="row">
+  	<div class ="column">
+  		<div class = "cardd">  <!--img src="public/images/pic.jpg" alt="image" id="profile" vibes>-->  <br>
+  		  Locate People around and engage in general chats. To do it, you are recommended to turn allow vibes to access your location<br>
+  		<button class = "Learn"> Learn More</button>
+</div>
+  	</div>
+  	 <div class ="row">
+  	<div class ="column">
+  		<div class = "cardd">  <!--img src="public/images/a.jpg" alt="image" id="profile" vibes>--> <br>
+  		 Find trending news,videos and events happenning right in your vicinity.<br><button class = "Learn"> Learn More</button>
+ 	 		</div>
+  	</div>
+</div>
+		 <footer>
+              <div class="container">
+								<div class="row"><br><br>
+									<div class="col-md-4">
+										<p>Contacts</p>
+										<p>Contacts</p>
+										<p>Contacts</p>
+										<p>Contacts</p>
+									</div>
+									<div class="col-md-4">
+										<p>Contacts</p>
+										<p>Contacts</p>
+										<p>Contacts</p>
+										<p>Contacts</p>
+
+									</div>
+								</div>
+              </div>
+    </footer>
+	</body>
+</html>

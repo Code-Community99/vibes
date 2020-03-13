@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form  action="{% url 'profile:event_manager' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <table>
+          <tr>
+            {{form.as_table}}
+          </tr>
+        </table>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+  </body>
+</html>

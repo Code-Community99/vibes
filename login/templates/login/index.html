@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="{% static 'login/style.css' %}">
+<title>Vibes</title>
+</head>
+<body>
+<div class="nav-bar">
+	<a href="{% url 'profile:profile' %}" >Home</a>
+	<a href="{% url 'business:business' %}" >Business</a>
+	<a href="{% url 'discover:discover' %}" >Discover</a>
+</div>
+
+<div class="loginbox">
+	<h4>vibes</h4>
+	<h3>log in to vibes</h3>
+		<form action="" method="POST">
+			{% csrf_token %}
+
+				<label for="email">Email</label>
+				<input type="text/number" id="email" name='email' autofocus="true" autosave="true">
+				<label for="password">password</label>
+				<input type="password" name="password" id="password"><br>
+				<input type="submit" name="submit" value="Log in"><br>
+		</form>
+
+	<a href="#">forgot password?</a>
+	<label>sign up for vibes</label>
+</div>
+</body>
+</html>

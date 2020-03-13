@@ -1,0 +1,125 @@
+{% load static %}
+
+<!-- The profile page -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'uprofile/css/style.css' %}">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Vibes | Profile</title>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="navbar">
+        <img class="img-logo" src="{% static 'business/img/vibes.jpg' %}">
+
+      </div>
+
+      <div class="navbar first">
+        <input type="search" name="" value="" placeholder="search..." style="border-radius:10px;padding-left:10px;">
+      </div>
+
+      <a href="{% url 'home:home' %}">
+        <i class="fa fa-home"></i>
+        <div class="navbar">
+          Home
+        </div>
+      </a>
+      <a href="{% url 'groups:groups' %}">
+        <i class="fa fa-users"></i>
+        <div class="navbar">
+          Groups
+        </div>
+      </a>
+      <a href="{% url 'notifications:notifications' %}">
+        <i class="fa fa-bell"></i>
+        <div class="navbar">
+          Notification
+        </div>
+      </a>
+      <a href="{% url 'business:business' %}">
+        <i class="fa fa-business-time "></i>
+        <div class="navbar">
+          Business
+        </div>
+      </a>
+    </div>
+    <!-- content-->
+    <div class="row profile">
+      <div class="col-md-3 profile-section">
+        <center>
+        <img src="/media/{{userinfo.profilepic}}" class="img-logo2">
+      </img>
+        <p>
+          <strong>{{userinfo.username}}</strong>
+        </p>
+        <h6 class="text-success">online</h6>
+        <div class="abt-user"><br>
+          <p>
+            <span class="fa fa-envelope">15 </span> <a href="{% url 'messaging:display' %}">Messages</a>
+          </p>
+
+          <p>
+            <span class="fa fa-map-marker">explore</span>
+          </p>
+
+          <p>
+            <a href="{% url 'settings:settings' %}">Edit profile</a>
+            <br>
+            <a href="{% url 'profile:event_manager' %}">AddEvent?</a>
+          </p>
+        </div>
+        <center>
+      </div>
+      <div class="col-md-9">
+        <center>
+          <h4>Events</h4>
+        </center>
+        <hr>
+        <center>
+          <!-- start of loop -->
+
+            {% for oneevnt in evnt %}
+
+            <div class="template row">
+              <div class="col-md-4 video-section">
+
+                <video controls loop width="100%" height="100%">
+                  <source src="/media/{{oneevnt.event_brief_pic}}" type="video/mp4">
+                </video>
+
+              </div>
+              <div class="col-md-6 eventdescription">
+              <div>
+                <strong>
+                  {{oneevnt.event_name}}
+                </strong>
+                <br>
+                {{oneevnt.event_description}}
+
+              </div>
+
+              <div class="event-time">
+                <p class="location">
+
+                  {{oneevnt.post_time}}
+                </p>
+                <p class="location">
+                  <i class="fa fa-map-marker" style="font-size:15px;"></i> Nairobi/Kenya
+                </p>
+              </div>
+              </div>
+
+            </div>
+
+            {% endfor %}
+
+          <!-- loop through all events -->
+        </center>
+      </div>
+    </div>
+  </body>
+</html>

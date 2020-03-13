@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>Vibes | Notification</title>
+    <link rel="icon" href="{% static 'business/img/vibes.jpg' %}" type="image/jpg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'notifications/notifications.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  </head>
+  <body>
+
+    <div class="header">
+
+      <div class="nav-bar">
+
+
+        <div class="logo">
+            <img src="{% static 'business/img/vibes.jpg' %}" alt="">
+        </div>
+
+          <a href="{% url 'home:home' %}">
+            <span class="fa fa-home"></span>
+          </a>
+
+          <a href="{% url 'groups:groups' %}">
+            <span class="fa fa-group"></span>
+          </a>
+
+          <a href="{% url 'business:business' %}">
+            <span class="fas fa-business-time"></span>
+          </a>
+
+          <a href="{% url 'discover:discover' %}">
+            <span class="fa fa-map-marker"></span>
+          </a>
+
+          <input type="text" name="search" value="" autocomplete="on" autofocus placeholder="Search" class="searchbar">
+
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="notif">
+        <p>Sales and orders</p>
+
+        <p class="not-show">Following you</p>
+      </div>
+        <div class="row">
+
+
+          <div class="col-xm-12 col-sm-12 col-lg-5 col-xl-5 div-main1">
+            <!-- Start of loop -->
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
+                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
+                  <label class = "notiflabel">Mike order 3 flash disks</label>
+                  <button type="button" name="button"><a href="{% url 'messaging:messaging' 1 %}">Chat</a> </button>
+              </div>
+
+            </div>
+            <!-- Begin dummy -->
+
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
+                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
+                  <label class = "notiflabel">Mike order 3 flash disks</label>
+                  <button type="button" name="button">Chat</button>
+              </div>
+
+            </div>
+
+
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
+                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
+                  <label class = "notiflabel">Mike bought 3 flash disks</label>
+                  <button type="button" name="button">view</button>
+              </div>
+
+            </div>
+
+
+
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
+                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
+                  <label class = "notiflabel">Mike order 3 flash disks</label>
+                  <button type="button" name="button">Chat</button>
+              </div>
+
+            </div>
+
+
+
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
+                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
+                  <label class = "notiflabel">Mike order 3 flash disks</label>
+                  <button type="button" name="button">Chat</button>
+              </div>
+
+            </div>
+
+
+
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
+                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
+                  <label class = "notiflabel">Mike order 3 flash disks</label>
+                  <button type="button" name="button">Chat</button>
+              </div>
+
+            </div>
+
+            <!-- end dummy -->
+          <!-- End of loop -->
+
+          </div>
+
+
+          <div class="col-xm-12 col-sm-12 col-lg-6 col-xl-6 div-main">
+
+            <!-- start of single notification -->
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 follower">
+                  <img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 follower">
+                  <label>
+                    Mike started following you.
+
+                  </label>
+                  <button type="button" name="button"><a href="{% url 'discover:followBot' aroundyou.uid %}">Follow</a> </button>
+              </div>
+
+
+            </div>
+
+
+
+            <!-- start of dummy -->
+
+
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 follower">
+                  <img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 follower">
+                  <label>
+                    Mike started following you.
+
+                  </label>
+                  <button type="button" name="button"><a href="{% url 'discover:followBot' aroundyou.uid %}">Follow</a> </button>
+              </div>
+
+
+            </div>
+            <div class="row signlenotif">
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 follower">
+                  <img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+              </div>
+
+
+              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 follower">
+                  <label>
+                    Mike started following you.
+
+                  </label>
+                  <button type="button" name="button"><a href="{% url 'discover:followBot' aroundyou.uid %}">Follow</a> </button>
+              </div>
+
+
+            </div>
+
+            <!-- end of dummy -->
+
+            <!-- end of single notification -->
+          </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+      <div class="lower-nav">
+
+
+        <a href="#" class="hide-small">
+          <span class="fa fa-line-chart"></span>
+        </a>
+
+        <a href="#" class="hide-small">
+          <span class="fa fa-pencil"></span>
+        </a>
+
+
+          <a href="{% url 'discover:discover' %}" class="hide-small">
+            <span class="fa fa-map-marker map"></span>
+          </a>
+
+
+        <a href="#" class="hide-small">
+          <span class="fa fa-calculator"></span>
+        </a>
+
+
+        <!-- <form class="form horizontal-form form-search" action="#" method="get">
+          <input type="text" name="search" value="" autocomplete="on" autofocus placeholder="Search">
+          <input type="button" name="" value="Search" class="fa fa-link">
+        </form> -->
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

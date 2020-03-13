@@ -1,0 +1,372 @@
+*
+{
+  box-sizing: border-box;
+  background-color: #fbfbfb;
+
+}
+.nav-bar
+{
+  display: flex;
+  margin-top: 10px;
+  color: #000;
+  height: 13vh;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.stock
+{
+  width: 60%;
+  display: flex;
+  margin: 0px auto;
+}
+
+
+.stock>button
+  {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 50%;
+    flex: 1;
+    border: 1px solid navy;
+    /* box-shadow: 1px 1px 3px #000; */
+    margin-bottom: 8px;
+  }
+
+
+.stock>button:last-child
+{
+  margin-left: 30px;
+}
+
+.stock>button>a
+{
+  /* color: magenta; */
+}
+
+
+.nav-bar>a
+{
+  box-sizing: border-box;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: #000;
+  flex: 1;
+  text-decoration: none;
+}
+.nav-bar>input
+{
+  box-sizing: border-box;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: #000;
+  flex: 1;
+  text-decoration: none;
+  text-align: center;
+  background-color: #fff;
+  /* height: 100%; */
+}
+
+
+.nav-bar>a>span
+{
+  color: #aaa;
+  font-size: 20px;
+  margin-left: 50%;
+}
+
+
+
+.stock>a:nth-child(2)
+  {
+    margin-left: 40%;
+    flex:1;
+  }
+
+
+
+.stock-manager
+{
+  display: flex;
+}
+
+.stock-manager>a
+{
+  flex: 1;
+  text-align: center;
+  background-color:#fff;
+  font-size: 18px;
+  color: navy;
+  text-decoration: none;
+}
+
+
+.Goods
+{
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 20px;
+  border-right: 2px;
+}
+
+
+.Goods>strong>label
+{
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  text-decoration:none;
+}
+
+
+.good-img
+{
+  background-color: none;
+  margin-left: 2%;
+}
+
+img
+{
+  box-sizing: border-box;
+  margin: 10px;
+  border-radius: 10%;
+  width: 200px;
+  height: 200px;
+}
+
+
+.card
+{
+  border-bottom:3px solid  purple;
+  margin-bottom: 20px;
+  color:#666;
+  /* background-color: #f00; */
+}
+
+
+.addingcart
+  {
+    position: relative;
+    right: 0%;
+    width: 100%;
+    margin: 0px auto;
+  }
+.addingcart>label
+{
+  position: relative;
+  text-align: right;
+  right: 0%;
+}
+
+.addingcart>input
+{
+  margin-left: 14px;
+}
+
+
+.sell-good
+{
+  width: 60%;
+  margin: 10vh auto;
+}
+
+
+.sell-good>input
+{
+  margin-top: 1.5vw;
+  background-color: #fff;
+  color: #000;
+}
+
+.sell-good>button
+{
+  margin-top: 1.5vw;
+  color: #000;
+}
+
+
+.selling-stock
+{
+  border: 1px solid #cccccc;
+
+}
+
+.selling-stock>strong>label
+{
+  text-decoration: none;
+  background-color: #00aaaa;
+  opacity: .8;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+}
+
+.selling-stock>table>tr>td>input
+{
+  background-color: red;
+}
+
+
+.sellingfrm>form>textarea
+{
+  text-align: center;
+  border-radius: 5px;
+}
+
+#location
+{
+  color: magenta;
+}
+
+
+
+.logo
+{
+  display: inline;
+  flex:1;
+}
+.logo>img
+{
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 10%;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 3vw;
+}
+
+.search-icon
+{
+  display: none;
+}
+
+.lower-nav
+{
+  display: none;
+}
+
+@media screen and (min-width:1000px) {
+.Goods{
+    border-right: 1px solid #ccc;
+  }
+
+.stock > a{
+  color:#aaa;
+  }
+
+  .sellingfrm
+  {
+    height: 60vh;
+    position: fixed;
+    top: 18%;
+    right: 0%;
+    background-color: inherit;
+  }
+
+}
+
+
+/* start of media query */
+@media screen and (max-width:1000px) {
+.Goods{
+    border-right: #ccc;
+  }
+
+.sellingfrm{
+    display: none;
+
+}
+.bar
+{
+
+}
+
+.stock > a{
+
+  }
+.form-search
+{
+    display: none;
+}
+
+.form-search>input
+{
+  display: none;
+}
+
+.hide-small
+{
+  display: none;
+}
+.search-icon
+{
+  display: inline;
+  position: fixed;
+  bottom: 50%;
+  right: 2%;
+  background-color: magenta;
+  width: 7%;
+  height: 9%;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.search-icon>a
+{
+  /* position: fixed; */
+  position: relative;
+  bottom: 0px;
+  right: 0px;
+  margin-left:28%;
+  margin-top: 24%;
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  z-index: 2;
+}
+
+.lower-nav
+{
+  width: 100%;
+  display: flex;
+  border-top:2px solid #c0c0c0;
+  background-color: #fafafa;
+  z-index: 1;
+  opacity: 1;
+}
+.lower-nav>a>span
+{
+  color: #aaa;
+  font-size: 20px;
+  margin-left: 50%;
+}
+
+
+
+.nav-bar>a
+{
+  box-sizing: border-box;
+  margin-top: 4%;
+  /* margin-bottom: 2%; */
+  color: #fff;
+  flex: 1;
+  text-decoration: none;
+}
+
+.lower-nav>a
+{
+  color:#fff;
+  display: inline-block;
+  flex: 1;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.lower-nav>a:first-child
+{
+  margin-left: 30px;
+}
+/* End of media query */
+}

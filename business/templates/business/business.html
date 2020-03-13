@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="icon" href="{% static 'business/img/vibes.jpg' %}" type="image/jpg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'business/business.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <meta charset="utf-8">
+    <title>Vibes | Business</title>
+  </head>
+  <body>
+    <div class="header">
+        <div class="nav-bar">
+              <div class="logo">
+                  <img src="{% static 'business/img/vibes.jpg' %}" alt="">
+              </div>
+
+                <input type="text" name="search" value="" autocomplete="on" autofocus placeholder="Search">
+
+              <a href="{% url 'profile:profile' %}">
+                <span class="fa fa-home"></span>
+
+              </a>
+
+              <a href="{% url 'business:viewcart' %}">
+                <span class="fa fa-shopping-basket"></span>
+
+              </a>
+
+              <a href="#" class="hide-small">
+                <span class="fa fa-line-chart"></span>
+
+              </a>
+
+              <a href="#" class="hide-small">
+                <span class="fa fa-pencil"></span>
+
+              </a>
+              <a href="{% url 'discover:discover' %}" class="hide-small">
+                <span class="fa fa-map-marker map"></span>
+
+              </a>
+
+
+              <a href="{% url 'groups:groups' %}">
+                <span class="fa fa-users"></span>
+
+              </a>
+
+              <a href="{% url 'notifications:notifications' %}">
+                <span class="fa fa-bell"></span>
+
+              </a>
+
+
+              <a href="#" class="hide-small">
+                <span class="fa fa-calculator"></span>
+
+              </a>
+
+              <!-- <a href="{% url 'settings:settings' %}" class="hide-small">
+                <span class="fa fa-cog"></span>
+
+              </a> -->
+
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-lg-7 col-xl-7">
+
+            <div class="Goods">
+                <strong><label>Goods</label></strong>
+                <div class="stock">
+
+                  <button type="button" name="button"><a href='#'>Buy</a></button>
+
+                  <button type="button" name="button"><a href='#'>Order </a></button>
+                </div>
+
+
+                {% for item in dataitems %}
+
+                <div class="gen-good card">
+                    <div class="good-img">
+                        <div class="card-body">
+
+                          <div class="container">
+
+                            <div class="row">
+                              <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+                                <img src="/media/{{item.Gphoto}}" class="card-img-right" alt="Hello world">
+                              </div>
+
+                              <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 goodcolor">
+                                <h5 class="card-title">{{item.Gtitle}}</h5>
+                                <p class="card-text">
+                                  {{item.GDescription}}
+                                </p>
+
+                                <!-- Use ajax to submit the item for record keeping in sessions -->
+                                <div class="container">
+                                  <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                      <label class="fa fa-map-marker map" class="divcolor"></label>
+                                      <label id="location" class="divcolor">{{item.GLocation}}</label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 divcolor">
+                                        <label class="item-price">{{item.Gprice}} Ksh</label>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <form class="addingcart" action="{% url 'business:cart' %}" method="post" class="divcolor">
+                                  {% csrf_token %}
+                                  <!-- Add the item id on the hidden field -->
+                                  <input type="hidden" name="itemid" value="{{item.GoodId}}">
+                                  <button name="submit" value="Sell" class="btn btn-info">Add to cart</button>
+                                  <!-- id="addcart{{item.GoodId}}"> -->
+                                  <!-- <label for="addcart{{item.GoodId}}" class="divcolor">Add to cart</label> -->
+                                </form>
+                              </div>
+
+
+                            </div>
+                          </div>
+
+
+                        </div>
+
+                      </div>
+                </div>
+
+                {% endfor %}
+
+
+                <div class="search-icon">
+                  <a href="#" class="fa fa-search"></a>
+                </div>
+                <!-- end of card -->
+              </div>
+
+
+
+            </div>
+
+              <div class="col-xs-12 col-sm-12 col-lg-5 col-xl-5 sellingfrm">
+                <div class="selling-stock">
+                  <strong><label>Sell</label></strong>
+                <form class="sell-good" action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                      <table>
+                        {{form.as_table}}
+                      </table>
+                    <button name="submit" value="Sell" class="btn btn-info">Sell item</button>
+                </form>
+              </div>
+              </div>
+
+
+        </div>
+
+
+        </div>
+
+        <div class="lower-nav" id="lower-nav">
+
+          <a href="#" class="hide-small">
+            <span class="fa fa-line-chart"></span>
+          </a>
+
+          <a href="#" class="hide-small">
+            <span class="fa fa-pencil"></span>
+          </a>
+
+
+            <a href="{% url 'discover:discover' %}" class="hide-small">
+              <span class="fa fa-map-marker map"></span>
+            </a>
+
+
+          <a href="#" class="hide-small">
+            <span class="fa fa-calculator"></span>
+          </a>
+
+
+          <form class="form horizontal-form form-search" action="#" method="get">
+            <input type="text" name="search" value="" autocomplete="on" autofocus placeholder="Search">
+            <input type="button" name="" value="Search" class="fa fa-link">
+          </form>
+
+        </div>
+
+      <div class="footer">
+
+      </div>
+    </div>
+  </body>
+</html>

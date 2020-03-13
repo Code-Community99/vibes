@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>Profiles</title>
+        <link rel="stylesheet" href=" {% static '/messages/styles.css' %}">
+    <!-- online links -->
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+           <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+          <link rel="stylesheet" href="/static/messages/messages.css">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+          <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+          <style>
+          .contacts{
+            margin-left: 32%;
+            border-radius:13px;
+            position: inherit;
+            /* margin-top: 50px; */
+          }
+          h1{
+            z-index: 1;
+            color: red;
+            margin-top: 0;
+            font-weight: bold;
+          }
+          .contacts{
+            margin-top: 20px;
+          }
+          </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="sticky-top text-center">Contacts List</h1>
+                      <div class="contacts contacts-bottom" id="contacts" col-sm-12 col-xs-12 col-md-12>
+            {% for people in peoples  %}
+            {% if people.username != senderName %}
+
+              <div class="card mb-0" style="max-width: height:250px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                     <a href="{% url 'messaging:messaging' people.uid %}" ><img src="/media/{{people.profilepic}}" alt="profile" class="card-img"></a>
+                    <small class="online-status"><i class="fa fa-circle text-success mr-1"></i>Online</small>
+                  </div>
+                  <!-- notification card -->
+
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <div class="name">
+                      <h5 class="card-title float-left"><a onclick="Display()" href="{% url  'messaging:messaging' people.uid %}">{{people.username}}</a></h5>
+                      <button type="button" class="btn btn-primary badge float-right">{{people.id}}
+                       <span class="badge badge-light"></span>
+                      </button>
+                      <div class="clearfix"></div>
+                      </div>
+                      <p class="card-text">{{people.msg}}</p>
+                      <p class="card-text time"><small class="text-muted">{{people.date| date:"H:i"}}</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+          </div>
+
+    </div>
+  </body>
+</html>

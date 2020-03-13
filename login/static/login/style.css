@@ -1,0 +1,103 @@
+*
+{
+	color:#ffffff;
+	box-sizing: border-box;
+}
+
+.nav-bar
+{
+	width:100%;
+	display: flex;
+	margin-top: 10px;
+	height: 50px;
+	background-image: linear-gradient(to right, red, purple);
+}
+
+
+.loginbox>h4
+{
+	box-sizing: border-box;
+	margin-top: 5%;
+}
+.nav-bar>a
+{
+	flex:1;
+	margin-top: 2vh;
+}
+
+.nav-bar>a:first-child
+{
+	margin-left: 5vw;
+}
+
+body
+{
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	font-family: sans-serif;
+	background-color:#ffffff;
+}
+
+
+.loginbox
+{
+width: 65%;
+height: auto;
+margin: 0px auto;
+padding:80px,40px;
+box-sizing: border-box;
+background-color: green;
+color: #000000;
+}
+.loginbox>form
+{
+	width: 50vw;
+	margin:0px auto;
+	color:#000000;
+	
+}
+.loginbox>form>input
+{
+	display: block;
+	color:#000000;
+	margin: 0px auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+
+}
+
+.loginbox>label
+{
+	display: block;
+	text-align: center;
+	margin: 0px auto;
+	text-align: center;
+}
+
+
+.loginbox>a
+{
+	display: block;
+	text-align: center;
+	margin-bottom: 2%;
+}
+
+h4
+{
+margin:0px;
+padding:0px 0px 20px;
+text-align:center;
+}
+h3
+{
+margin: 0;
+padding: 0 0 20px;
+text-align: center;
+}
+p
+{
+	margin: 0;
+	padding: 0 0 30px;
+	color: white;
+}

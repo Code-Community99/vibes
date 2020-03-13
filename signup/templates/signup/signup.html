@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<title>Vibes | signup</title>
+	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
+</head>
+<body>
+	<p>
+		<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo">
+
+	</p>
+
+	<div class="bon">
+		<div class="bony">
+			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data">
+
+				<h2>Signup to vibes</h2>
+					{% for error in error_log %}
+					<label class="inputlabel">
+						{{error}}
+				</label>
+					{% endfor %}
+					{% csrf_token %}
+				<!-- <input type="hidden" name="_token" value="{{ csrf_token }}" id="tok"> -->
+				<input type="text" placeholder="Username" name = "username" required autocomplete="true" class="input" onchange="userauthentication()" id="uname">
+				<label id="usernamevalid" class="validation"></label>
+				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
+				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
+				<label id="emailvalid" class="validation"></label>
+				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)">
+				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
+				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
+				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
+				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
+				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager()">
+					Signup
+					<!-- <i class="" id="submit"></i> -->
+					<i class="" id="spin"></i>
+				</button>
+
+
+			</form>
+
+				<p style="text-align:center">
+					<span>Already have an account?</span>
+						<a class="link" href="{% url 'login:login' %}">
+						Sign in
+					</a>
+				</p>
+
+
+	</div>
+</div>
+
+		<footer>
+
+    </footer>
+</body>
+<script type="text/javascript">
+
+
+
+function spinnermanager()
+{
+
+	if(document.getElementById("uname").value != "" && document.getElementById("phone").value != "" && document.getElementById("ema").value != "" && document.getElementById("pass1").value != "" &&  document.getElementById("pass2").value != "" &&
+	 document.getElementById("pass2").value !="" && document.getElementById("profile").value != "")
+	{
+
+		document.getElementById("spin").setAttribute("class" , "fa fa-spinner fa-spin fa-1x");
+	}
+
+
+	// document.getElementById("submit").setAttribute("disabled");
+	// var csrf = document.getElementById("tok").value;
+	// var uname = document.getElementById("uname").value;
+	// var phone = document.getElementById("phone").value;
+	// var email = document.getElementById("ema").value;
+	// var password = document.getElementById("pass1").value;
+	// var hobby = document.getElementById("hobby").value;
+	// var profilepic = document.getElementById("profile").value;
+	//
+	//
+	//
+	// var xhttp = new XMLHttpRequest();
+	// xhttp.onreadystatechange = function()
+	// {
+	// 	if(this.readyState == 4 && this.status == 200)
+	// 	{
+	// 		document.getElementById("spin").setAttribute("class" , "");
+	// 			alert(this.responseText);
+	// 	}
+	// }
+	//
+	// xhttp.open("POST" , "/signup/" , true);
+	// var ck = document.cookie.split("=")[1];
+	// alert(ck);
+	// xhttp.setRequestHeader("X-CSRFToken" ,ck);
+	// xhttp.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+	// xhttp.send("username="+uname+"&pnumber="+phone+"&email="+email+"&password="+password+"&hobby="+hobby+"&profilepic"+profilepic);
+
+}
+
+
+
+function form_manager()
+{
+	var flag = false;
+
+	if(document.getElementById("uname").value == "")
+	{
+
+		alert("Username blank");
+	}
+
+	else if(document.getElementById("phone").value == "")
+	{
+
+		alert("phone blank");
+	}
+	else if(document.getElementById("ema").value == "")
+	{
+
+		alert("email blank");
+	}
+	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == "")
+	{
+
+		alert("pass1 blank");
+	}
+
+else if(document.getElementById("hobby").value == "")
+	{
+
+		alert("hobby blank");
+	}
+	else if(document.getElementById("profile").value == "")
+	{
+
+		alert("profile blank");
+	}
+	else {
+
+	}
+	spinnermanager();
+}
+
+
+	function passwordmaster()
+	{
+		var pass1 = document.getElementById("pass1").value;
+		var pass2 = document.getElementById("pass2").value;
+
+		if(pass1 != "" && pass2 != "")
+			{
+
+				if(pass1 == "" || pass2 == "")
+					{
+						document.getElementById("pass1").innerHTML = "";
+						document.getElementById("pass2").innerHTML = "";
+						alert("password cannot be empty");
+					}
+
+				else if(pass1 != pass2)
+					{
+						document.getElementById("pass1").innerHTML = "";
+						document.getElementById("pass2").innerHTML = "";
+						alert("Password mismatch");
+					}
+
+				else {
+					if(pass1.length < 10)
+						{
+							document.getElementById("pass2").innerHTML = "";
+							document.getElementById("pass1").innerHTML = "";
+							alert("Short password");
+						}
+					}
+			}
+	}
+
+
+
+
+
+
+
+
+// Verifcation
+	function userauthentication(uid)
+	{
+		var xhttp = new XMLHttpRequest();
+		var user = document.getElementById("uname").value;
+		xhttp.onreadystatechange = function()
+		{
+			if(this.readyState == 4 && this.status == 200)
+			{
+				if(this.responseText == "true")
+					{
+						document.getElementById("usernamevalid").innerHTML = "username taken";
+						document.getElementById("usernamevalid").style.color = "#f00";
+						// document.getElementById("submit").disabled=true;
+					}
+
+					else {
+						document.getElementById("usernamevalid").innerHTML = "username available";
+						document.getElementById("usernamevalid").style.color = "#7fa";
+						// document.getElementById("submit").enabled=true;
+					}
+			}
+		};
+		xhttp.open("GET" ,'/signup/userauthentication/?username='+user , true);
+		xhttp.send();
+
+	}
+
+
+
+	function emailauthentication(emid)
+	{
+		var xhttp = new XMLHttpRequest();
+		var email = document.getElementById("ema").value;
+		xhttp.onreadystatechange = function()
+		{
+			if(this.readyState == 4 && this.status == 200)
+			{
+				if(this.responseText == "true")
+				{
+					document.getElementById("emailvalid").innerHTML = "Email in use by another account";
+					document.getElementById("emailvalid").style.color = "#f00";
+					// document.getElementById("submit").disabled=true;
+				}
+
+				else if(this.responseText == "false"){
+					document.getElementById("emailvalid").innerHTML = "email available";
+					document.getElementById("emailvalid").style.color = "#7fa";
+					// document.getElementById("submit").enabled=true;
+				}
+
+				else{
+					document.getElementById("emailvalid").innerHTML = this.responseText;
+					document.getElementById("emailvalid").style.color = "#f00f00";
+				}
+			}
+		};
+		// xhttp.responseType = "json";
+		xhttp.open("GET" , "/signup/emailauthentication/?email="+email , true);
+		xhttp.send();
+	}
+
+</script>
+</html>

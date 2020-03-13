@@ -1,0 +1,133 @@
+*{
+	padding:0px;
+	margin:0px;
+	font-family:arial;
+	box-sizing:border-box;
+}
+
+body{ background-color:#f0f0f0;
+}
+
+a{
+	color: #456;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+
+
+form{
+	/* margin-top: 10%; */
+}
+.link{
+	color:#3b5998;
+}
+
+#forgot{
+	margin-left: 60%;
+	color: #0f0;
+
+}
+
+p{
+	margin:5px 0px;
+}
+
+
+form{
+	margin-top: 2%;
+}
+.bon{
+	height: auto;
+min-height:60vh;
+width:50%;
+margin: 2% auto;
+background-color: white;
+border: 1px solid #c0c0c0;
+padding-top:10px;
+
+ }
+
+.bony{
+	padding:5px 20px 20px;
+	height: auto;
+}
+
+.bony>h3:first-child
+{
+	margin-top: 20%;
+}
+
+.bony>h1,h2,h3,h4,h5,h6{
+	text-align:center;
+   margin: 5px 0px;
+}
+
+.inputlabel
+{
+	display: block;
+	width: 40%;
+	padding: 10px ;
+	margin: 10px auto;
+	color: red;
+	display: block;
+	text-align: center;
+}
+
+
+.input{
+	display: block;
+	width: 40%;
+	padding: 10px ;
+	margin: 3px auto;
+	border: 1px solid #c0c0c0;
+	display: block;
+	text-align: center;
+
+}
+
+button
+{
+	display: block;
+	width: 40%;
+	padding: 10px ;
+	margin: 3px auto;
+	border: 1px solid #c0c0c0;
+	display: block;
+	text-align: center;
+	background-color: #3b5998;
+}
+
+.validation
+{
+	font-size: 14px;
+	display: block;
+	width: 40%;
+	margin: 0px auto;
+	color: red;
+	display: block;
+	text-align: center;
+}
+
+#submit{
+
+	border: 2px solid #3b5998;
+	background-color:#3b5998;
+	margin: 0px auto;
+	color:white;
+	font-size: 19px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-bottom: 2%;
+}
+
+#photo{
+	width: 100px;
+	height: 100px;
+	border-radius:300px;
+	background: green;
+	position:center;
+	margin-top:15px;
+	margin-left:45%;
+	border: 2px solid #3399ff;
+}

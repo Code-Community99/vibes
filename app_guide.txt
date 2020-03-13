@@ -1,0 +1,23 @@
+--------------------------------------Hello dear developer---------------------------------
+
+==================================Read this before you do anything==========================
+
+#This is the vibes application and we just started it on this day 10th if feb 2020,
+
+Iam here to only give you guides to what you will be working on.
+
+
+In each an every folder in this current folder level. We have a set of files. Please dont
+alter the structure of the files. you can only modify but dont delete.
+
+On each of this files we have static folder and templates folder.
+
+Static folder is used for storage of static files like css, background images,gif exetra.
+In order to add a file first navigate to inner most folder and add your files there.
+
+The templates folder is used to house html files only, In order to add a file first
+navigate to inner most folder and add your files there.
+
+If in need of any assistance contact me. email:anornymous99@gmail.com
+
+Happy coding, see yuh. (*~*)
