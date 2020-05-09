@@ -9,16 +9,18 @@ from .models import Followers
 def discover(request):
 
     try:
-        request.session['username']
+        userdetails = signup.objects.get(username = request.session['username'])
 
     except KeyError as e:
         return redirect("/login/")
 
     else:
-        users = signup.objects.exclude(username = request.session['username']).annotate(follow = Count("followers"))
-        around = signup.objects.filter(location = signup.objects.get(username = request.session['username']).location).exclude(username = request.session['username']).annotate(follow = Count("followers") , follower = Count("following"))
+        users = signup.objects.exclude(username = request.session['username']).annotate(follow = Count("followingcounter")  ,
+        follower = Count("followercounter"))
+        around = signup.objects.filter(location = signup.objects.get(username = request.session['username']).location).exclude(username =
+        request.session['username']).annotate(follow = Count("followercounter") , follower = Count("followingcounter"))
 
-        return render(request , "discover/discover.html" , context = {"users":users , "around": around})
+        return render(request , "discover/discover.html" , context = {"users":users , "around": around , "userdetails":userdetails})
 
 
 
@@ -30,7 +32,7 @@ def followBot(request , fid):
         return redirect("/login/")
 
     else:
-        Followers.objects.create(follower_id = uuid,following_id = fid)
+        Followers.objects.create(user_follower_id = uuid,user_following_id = fid)
         return redirect("/discover/")
 
 

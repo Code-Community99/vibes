@@ -50,10 +50,11 @@ def ChangeDetails(request):
                 username = request.POST["username"]
                 email = request.POST["email"]
                 pnumber = request.POST["pnumber"]
-
+                image = request.FILES["profile"]
                 changer.username = username
                 changer.email = email
                 changer.pnumber = pnumber
+                changer.profilepic = image
                 changer.save()
                 request.session['username'] = username
                 return redirect("/messages/")

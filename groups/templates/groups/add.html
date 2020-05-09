@@ -1,16 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <form class="" action="{% url 'groups:creategroup' %}" method="post"  enctype="multipart/form-data">
-      {% csrf_token %}
-        <table>
-          {{form.as_table}}
-        </table>
-        <input type="submit" name="submit" value="submit">
-    </form>
-  </body>
+<html lang="en">
+<head>
+  	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  	<title>Vibes | Login</title>
+  	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
+</head>
+
+<body>
+  	<p>
+  		<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo" vibes>
+
+  	</p>
+
+  	<div class="bon">
+    		<div class="bony">
+
+        	<form action="{% url 'groups:creategroup' %}" method="POST">
+        		{% csrf_token %}
+        		<h3> Create group</h3>
+
+        		{% for error in error_log %}
+        		<label class="inputlabel">
+        			{{error}}
+        		</label>
+        		{% endfor %}
+
+            <table>
+              {{form.as_table}}
+            </table>
+
+            <input type="submit" value="Create" class="input">
+
+        	</form>
+    	</div>
+  </div>
+
+</body>
 </html>

@@ -1,4 +1,5 @@
 {% load static %}
+{% load controller %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -84,16 +85,23 @@
                       <h2 class="suggestuser">{{user.username}}</h2>
                     </label>
 
-                    <label>Followers {{user.follower}}</label>
-                    <label>Following {{user.follow}}</label>
+                    <label>Following {{user.followercounter.count}}</label>
+                    <label>Followers {{user.followingcounter.count}}</label>
 
+                    {% if user.uid|cnt:userdetails %}
                     <div class="follow">
                       <label class="fa fa-map-marker"> {{user.location}}</label>
                       <label>Job {{user.hobby}}</label>
-                      <button type="button" name="button">
-                        <a href="{% url 'discover:followBot' user.uid %}">Follow</a>
-                      </button>
                     </div>
+                    {% else %}
+                      <div class="follow">
+                        <label class="fa fa-map-marker"> {{user.location}}</label>
+                        <label>Job {{user.hobby}}</label>
+                        <button type="button" name="button">
+                          <a href="{% url 'discover:followBot' user.uid %}">Follow</a>
+                        </button>
+                      </div>
+                    {% endif %}
 
                   </div>
 
@@ -122,8 +130,8 @@
 
                 <div class="user-content">
                   <h2>{{aroundyou.username}}</h2>
-                  <label>Followers {{aroundyou.follower}}</label>
-                  <label>Following {{aroundyou.follow}}</label>
+                  <label> Following {{aroundyou.followercounter.count}}</label>
+                  <label>Followers {{aroundyou.followingcounter.count}}</label>
                   <label class="fa fa-map-marker"> {{aroundyou.location}}</label>
                   <label>Job {{aroundyou.hobby}}</label>
                   <button type="button" name="button">

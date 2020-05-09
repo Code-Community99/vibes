@@ -16,8 +16,8 @@
 
 .users
 {
+  max-height: 90vh;
   overflow-y: scroll;
-  max-height: 60vh;
 }
 
 
@@ -114,7 +114,7 @@
 {
 
 	margin: 10px auto;
-	margin-left: 50px;
+	margin-left: 0px;
 }
 
 .viewmore
@@ -237,4 +237,25 @@
 {
 	border-bottom: 1px solid #c0c0c0;
   background-color: #fff;
+}
+
+.groups{
+    max-height: 90vh;
+  overflow: auto;
+}
+.users{
+  left: 0px;
+  position: fixed;
+}
+.groups{
+  right: 0px;
+  position: fixed;
+}
+
+
+
+@media only screen and (max-width:700px) {
+  .group-header{
+    display: none;
+  }
 }

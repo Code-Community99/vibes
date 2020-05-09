@@ -14,8 +14,23 @@
 <link rel="stylesheet" href="{% static 'notifications/notifications.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+<script type="text/javascript">
+  function rebot(){
+    obj = new XMLHttpRequest();
+    obj.onreadystatechange = function(){
+        if (this.status == 200 && this.readyState == 4) {
+            alert(this.responseText);
+        }
+    };
+
+    obj.open("GET" , "/notifications/");
+    obj.send();
+
+  }
+</script>
   </head>
-  <body>
+  <body onmousemove="rebot()">
 
     <div class="header">
 
@@ -59,87 +74,19 @@
 
           <div class="col-xm-12 col-sm-12 col-lg-5 col-xl-5 div-main1">
             <!-- Start of loop -->
+            {% for notif in notify %}
             <div class="row signlenotif">
               <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
-                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
+                  <img src="/media/{{notif.source.profilepic}}" alt="image">
               </div>
 
               <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
-                  <label class = "notiflabel">Mike order 3 flash disks</label>
-                  <button type="button" name="button"><a href="{% url 'messaging:messaging' 1 %}">Chat</a> </button>
+                  <label class = "notiflabel">{{notif.message}} <br> {{notif.notiftime}}</label>
+                  <button type="button" name="button"><a href="{% url 'messaging:messaging' notif.source.uid %}">Chat</a> </button>
               </div>
 
             </div>
-            <!-- Begin dummy -->
-
-            <div class="row signlenotif">
-              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
-                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
-              </div>
-
-              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
-                  <label class = "notiflabel">Mike order 3 flash disks</label>
-                  <button type="button" name="button">Chat</button>
-              </div>
-
-            </div>
-
-
-            <div class="row signlenotif">
-              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
-                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
-              </div>
-
-              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
-                  <label class = "notiflabel">Mike bought 3 flash disks</label>
-                  <button type="button" name="button">view</button>
-              </div>
-
-            </div>
-
-
-
-            <div class="row signlenotif">
-              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
-                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
-              </div>
-
-              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
-                  <label class = "notiflabel">Mike order 3 flash disks</label>
-                  <button type="button" name="button">Chat</button>
-              </div>
-
-            </div>
-
-
-
-            <div class="row signlenotif">
-              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
-                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
-              </div>
-
-              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
-                  <label class = "notiflabel">Mike order 3 flash disks</label>
-                  <button type="button" name="button">Chat</button>
-              </div>
-
-            </div>
-
-
-
-            <div class="row signlenotif">
-              <div class="col-xm-12 col-sm-4 col-md-4  col-lg-4 col-xl-4 notifyuser">
-                	<img src="{% static 'notifications/img/robot.jpg' %}" alt="image">
-              </div>
-
-              <div class="col-xm-12 col-sm-5 col-md-6  col-lg-6 col-xl-6 notifymessage">
-                  <label class = "notiflabel">Mike order 3 flash disks</label>
-                  <button type="button" name="button">Chat</button>
-              </div>
-
-            </div>
-
-            <!-- end dummy -->
+            {% endfor %}
           <!-- End of loop -->
 
           </div>

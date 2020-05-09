@@ -15,7 +15,7 @@
 
 	<div class="bon">
 		<div class="bony">
-			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data">
+			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" onabort="cancel()">
 
 				<h2>Signup to vibes</h2>
 					{% for error in error_log %}
@@ -35,7 +35,7 @@
 				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
 				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
-				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager()">
+				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager()" onabort="cancel()">
 					Signup
 					<!-- <i class="" id="submit"></i> -->
 					<i class="" id="spin"></i>
@@ -61,7 +61,10 @@
 </body>
 <script type="text/javascript">
 
-
+function cancel(){
+	alert("Hello world");
+	document.getElementById("spin").setAttribute("class" , "");
+}
 
 function spinnermanager()
 {

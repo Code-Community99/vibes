@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width ,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="{% static 'uprofile/css/add.css' %}">
+    <title>Hello | Add Event</title>
   </head>
   <body>
     <form  action="{% url 'profile:event_manager' %}" method="post" enctype="multipart/form-data">

@@ -11,6 +11,7 @@ class Groups(models.Model):
     group_icon = models.ImageField()
     group_location = models.CharField(max_length = 30)
     group_description = models.CharField(max_length = 255)
+    group_create = models.DateTimeField(auto_now_add = True)
 
     class Meta:
         db_table = "Groups"

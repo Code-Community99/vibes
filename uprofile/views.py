@@ -20,8 +20,6 @@ def profile(request):
         userinfo = signup.objects.get(username = userinfo)
 
         evnt = events.objects.all()
-        print(evnt)
-
         return render(request , "uprofile/uprofile.html" , context = {"userinfo":userinfo , "evnt":evnt})
 
 
