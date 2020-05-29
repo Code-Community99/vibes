@@ -4,10 +4,9 @@ from django.http import HttpResponse
 from signup.models import signup
 from django.db.models import Count,Q
 from .models import Followers
-
+from userfriendly_api import model
 
 def discover(request):
-
     try:
         userdetails = signup.objects.get(username = request.session['username'])
 
@@ -15,6 +14,7 @@ def discover(request):
         return redirect("/login/")
 
     else:
+        model.vibes_friends(userdetails)
         users = signup.objects.exclude(username = request.session['username']).annotate(follow = Count("followingcounter")  ,
         follower = Count("followercounter"))
         around = signup.objects.filter(location = signup.objects.get(username = request.session['username']).location).exclude(username =
@@ -24,16 +24,16 @@ def discover(request):
 
 
 
-def followBot(request , fid):
+def followBot(request):
     try:
         uuid = signup.objects.get(username = request.session['username']).uid
-
+        fid = request.POST["userid"]
     except Exception as e:
         return redirect("/login/")
 
     else:
         Followers.objects.create(user_follower_id = uuid,user_following_id = fid)
-        return redirect("/discover/")
+        return HttpResponse("Followed")
 
 
 

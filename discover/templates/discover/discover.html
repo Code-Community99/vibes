@@ -97,8 +97,8 @@
                       <div class="follow">
                         <label class="fa fa-map-marker"> {{user.location}}</label>
                         <label>Job {{user.hobby}}</label>
-                        <button type="button" name="button">
-                          <a href="{% url 'discover:followBot' user.uid %}">Follow</a>
+                        <button type="button" name="button" onclick="autodata_submission({{user.uid}});">
+                          <a>Follow</a>
                         </button>
                       </div>
                     {% endif %}
@@ -134,26 +134,38 @@
                   <label>Followers {{aroundyou.followingcounter.count}}</label>
                   <label class="fa fa-map-marker"> {{aroundyou.location}}</label>
                   <label>Job {{aroundyou.hobby}}</label>
-                  <button type="button" name="button">
-                    <a href="{% url 'discover:followBot' aroundyou.uid %}">Follow</a>
+                  <button type="button" name="button" onclick="autodata_submission({{aroundyou.uid}})">
+                    <a>Follow</a>
                   </button>
                 </div>
 
               </div>
 
               {% endfor %}
-
               <!-- End of individual dataset -->
-
-
-
-
             </div>
         </div>
 
       </div>
     </div>
-
-
-  </body>
+<script type="text/javascript">
+function autodata_submission(userid) {
+    try {
+      var xmlobj = new XMLHttpRequest();
+    } catch (e) {
+      var xmlobj = new ActiveXObject();
+    } finally {
+      xmlobj.onreadystatechange = function(){
+            if (this.readyState ==4 && this.status==200) {
+            alert(this.responseText);
+        }
+      }
+      xmlobj.open("post" , "{% url 'discover:followBot' %}" , true)
+      xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+      xmlobj.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+      xmlobj.send("userid="+userid);
+    }
+  }
+</script>
+</body>
 </html>
