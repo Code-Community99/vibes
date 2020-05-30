@@ -5,6 +5,7 @@ from signup.models import signup
 from django.db.models import Count,Q
 from .models import Followers
 from userfriendly_api import model
+from itertools import chain
 
 def discover(request):
     try:
@@ -14,12 +15,14 @@ def discover(request):
         return redirect("/login/")
 
     else:
-        model.vibes_friends(userdetails)
+        model_user = model.vibes_friends(userdetails)
+        predict_data = model_user.model_report()
+        all_info = [signup.objects.get(uid = value) for value in predict_data]
         users = signup.objects.exclude(username = request.session['username']).annotate(follow = Count("followingcounter")  ,
         follower = Count("followercounter"))
         around = signup.objects.filter(location = signup.objects.get(username = request.session['username']).location).exclude(username =
         request.session['username']).annotate(follow = Count("followercounter") , follower = Count("followingcounter"))
-
+        around = all_info
         return render(request , "discover/discover.html" , context = {"users":users , "around": around , "userdetails":userdetails})
 
 
