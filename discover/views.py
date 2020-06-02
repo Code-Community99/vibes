@@ -15,9 +15,17 @@ def discover(request):
         return redirect("/login/")
 
     else:
-        model_user = model.vibes_friends(userdetails)
-        predict_data = model_user.model_report()
-        all_info = [signup.objects.get(uid = value) for value in predict_data]
+        if userdetails.location is None:
+            model_user = model.vibes_friends(userdetails)
+            predict_data = model_user.model_report()
+            all_info = [signup.objects.get(uid = value) for value in predict_data]
+        else:
+            model.predict_user_location(userdetails)
+            model_user = model.vibes_friends(userdetails)
+            predict_data = model_user.model_report()
+            all_info = [signup.objects.get(uid = value) for value in predict_data]
+
+        # .annotate(total=Sum("followercounter__user_follower" , "followingcounter__user_following")).order_by("-total")
         users = signup.objects.exclude(username = request.session['username']).annotate(follow = Count("followingcounter")  ,
         follower = Count("followercounter"))
         around = signup.objects.filter(location = signup.objects.get(username = request.session['username']).location).exclude(username =

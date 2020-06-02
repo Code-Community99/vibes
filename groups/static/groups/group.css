@@ -2,9 +2,6 @@
 {
   background-color: #fafafa;
 }
-
-
-
 .row>.alldivs
 {
   box-sizing: border-box;
@@ -14,22 +11,15 @@
   margin-top: 10px;
 }
 
-.users
-{
+.users{
   max-height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
-
-
-
-
-.logo
-{
+.logo{
   display: inline;
   flex:1;
 }
-.logo>img
-{
+.logo>img{
   color: #fff;
   box-sizing: border-box;
   border-radius: 10%;
@@ -38,8 +28,7 @@
   margin-bottom: 3vw;
 }
 
-.nav-bar
-{
+.nav-bar{
   display: flex;
   margin-top: 10px;
   color: #000;
@@ -48,8 +37,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-.nav-bar>a
-{
+.nav-bar>a{
   box-sizing: border-box;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -59,8 +47,7 @@
 }
 
 
-.nav-bar>input
-{
+.nav-bar>input{
   box-sizing: border-box;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -71,18 +58,12 @@
   background-color: #fff;
   /* height: 100%; */
 }
-
-
-
-.div-nav
-{
+.div-nav{
 	margin: 10px auto;
-
 }
 
 
-.div-nav>input
-{
+.div-nav>input{
 	margin-left: 0px;
 	box-sizing: border-box;
   margin-top: 2%;
@@ -93,11 +74,7 @@
   text-align: center;
   background-color: #fff;
 }
-
-
-
-.upper-label
-{
+.upper-label{
 	width: 100%;
 	margin-left: 0px;
 	box-sizing: border-box;
@@ -110,63 +87,42 @@
   background-color: #fff;
 }
 
-#groups
-{
-
+#groups{
 	margin: 10px auto;
 	margin-left: 0px;
 }
 
-.viewmore
-{
+.viewmore{
 	min-height: 10px;
 }
-
-
-.viewmore>a
-{
+.viewmore>a{
 	text-align: right;
 }
-
-
-
-.user>label
-{
+.user>label{
 	display: block;
 	font-weight: bold;
 	margin-left: 20px;
 	margin-top: 5px;
   background-color: #fff;
 }
-
-
-
-.user>img
-{
+.user>img{
 	width: 70px;
 	height: 70px;
 	border-radius: 50%;
 	margin-bottom: 30px;
 }
 
-.user>p
-{
+.user>p{
 	display: inline;
 	margin-left: 15px;
   background-color: #fff;
-
 }
 
 
-.user
-{
+.user{
 	border-bottom: 1px solid #c0c0c0;
   background-color: #fff;
 }
-
-
-
-
 .imgg>img
 {
 	width: 70px;

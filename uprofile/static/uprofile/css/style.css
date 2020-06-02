@@ -15,23 +15,20 @@
 
 .eventdescription{
     margin-left: 20px;
-      border-bottom: 1px solid #0ca0ca;
+    border-bottom: 1px solid #0ca0ca;
 }
 .row{
   width: 100%;
 }
 
-.first
-{
+.first{
   width: 30%;
 }
 
-.first>input
-{
+.first>input{
   margin: 0px auto;
   width: 50%;
   height: 80%;
-
   text-align: center;
 }
 
@@ -117,13 +114,11 @@
 }
 
 
-.abt-user>p>span
-{
+.abt-user>p>span{
   font-size: 20px;
 }
 
-  .nav>a:first-child
-  {
+  .nav>a:first-child{
     margin-left: 30px;
   }
 
@@ -133,6 +128,7 @@
   .profile-section{
     border-right: 1px solid black;
   }
+
   .video-section{
     min-width:100px;
     min-height: 200px;
@@ -148,16 +144,13 @@
   .event-time>.location{
     text-align: right;
   }
-  .video-section>video
-  {
+  .video-section>video{
     width:20vw;
     height: 30vh;
     background: grey;
     /* background-image: image(); */
   }
 }
-
-
 
 .main-frame{
   overflow-y: auto;

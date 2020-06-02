@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from signup.models import signup
 from django.db.models import Count ,Q
 # Create your views here.
-
+from itertools import chain
 
 def display(request):
     # url = ""
@@ -13,7 +13,7 @@ def display(request):
     except Exception as e:
         return redirect("/login/")
     else:
-        peoples = signup.objects.all()
+        peoples = signup.objects.all().exclude(username=request.session["username"])
         list = []
         cou = 0
         for people in peoples:
@@ -39,10 +39,7 @@ def display(request):
         return render(request , "messages/people.html" , {"peoples":peoples , "senderName":senderName})
 
 def messaging(request , receiverId):
-    i = 0
-    mes = MsgContent.objects.filter(readStatus = 0).order_by("postTime")
-    for m in mes:
-        i = i+1
+    i = MsgContent.objects.filter(readStatus = 0).order_by("postTime").count()
     try:
         request.session["username"]
 
@@ -51,6 +48,9 @@ def messaging(request , receiverId):
 
     else:
         peoples = signup.objects.all()
+        peoples = signup.objects.filter(Q(followercounter__user_follower = signup.objects.get(username = request.session["username"]))|Q(followingcounter__user_following = signup.objects.get(username = request.session["username"])))
+        print(peoples)
+        print("\n\n\n")
         list = []
         cou = 0
         for people in peoples:
