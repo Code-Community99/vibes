@@ -172,11 +172,8 @@
 
 								<button type="button" name="button">Comment</button>
 						</div>
-
 					</div>
 					</div>
-
-
 					<div class="recentuser">
 						<label>Name</label>
 					<div class="row">
@@ -190,30 +187,22 @@
 
 								<button type="button" name="button">Comment</button>
 						</div>
-
 					</div>
 					</div>
-
-
-
-<!-- End of div -->
+			<!-- End of div -->
 				</div>
-
-
-
-
-
 				<div class="col-xm-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 alldivs groups">
 						<!-- Start of loop -->
-
-						<div class="div-nav">
-							<label class="upper-label">Groups</label>
-							<input type="text" name="search" value="" autocomplete="on" autofocus placeholder="Search" id="groups">
-							<button type="button" name="button" class="creategroup"><a href="{% url 'groups:creategroup' %}"> Create Group</a></button>
-						</div>
-
-
-
+						<label class="upper-label">Groups</label>
+						<form class="" action="{% url 'groups:creategroup' %}" method="post">
+									{% csrf_token %}
+									<div class="div-nav">
+										<input type="search" name="search" autocomplete="on" autofocus placeholder="Search" id="groups">
+									</div>
+						</form>
+						<button type="button" name="button" class="creategroup">
+							<a href="{% url 'groups:creategroup' %}"> Create Group</a>
+						</button>
 						{% for g in Group %}
 
 						<div class="">

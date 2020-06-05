@@ -24,10 +24,6 @@ def groupsview(request):
 
         return render(request , "groups/group.html" , context = {"users":users , "Group":Group , "current":request.session['username']})
 
-
-
-
-
 def creategroup(request):
     form = gform()
     if request.method =="POST":

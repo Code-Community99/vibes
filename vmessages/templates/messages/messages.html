@@ -40,14 +40,14 @@
           </div>
           <div class="float-right">
             <!-- the unread message counter is inside sup tag -->
-            <h3 class="fas fa-envelope"></h3><sup class="success">{{i}}</sup></i>
+            <h3 class="fas fa-envelope"></h3><sup class="success">{{individualSum}}</sup></i>
             <i><p class="fas fa-map-marker"></p></i>
         </div>
       </header>
       <!-- <div class=""> -->
           <div class="contacts contacts-bottom" id="contacts">
             {% for people in peoples %}
-                {% if people.username != senderName %}
+                {% if people.username != senderName.username %}
                   <div class="card mb-0" style="max-width: height:250px;">
                     <div class="row no-gutters">
                       <div class="col-md-4">
@@ -59,7 +59,7 @@
                         <div class="card-body">
                           <div class="name">
                           <h5 class="card-title float-left"><a onclick="Display()" href="{% url 'messaging:messaging' people.uid %}">{{people.username}}</a></h5>
-                          <button type="button" class="btn btn-primary badge float-right">{{people.id}}
+                          <button type="button" class="btn btn-primary badge float-right">{{people.signup_uid__count}}
                            <span class="badge badge-light"></span>
                           </button>
                           <div class="clearfix"></div>
@@ -90,17 +90,17 @@
                       <div class="chat-history">
                         <ul>
                           {% for msg in messages %}
-                          {% if msg.suid.username == senderName %}
-                          <li class="clearfix">
-                            <div class="message-data align-right">
-                              <span class="message-data-time">{{msg.postTime}}</span> &nbsp; &nbsp;
-                              <span class="message-data-">{{msg.suid.username}}</span> <i class="fa fa-circle me"></i>
+                              {% if msg.suid.username == senderName.username %}
+                              <li class="clearfix">
+                                <div class="message-data align-right">
+                                  <span class="message-data-time">{{msg.postTime}}</span> &nbsp; &nbsp;
+                                  <span class="message-data-">{{msg.suid.username}}</span> <i class="fa fa-circle me"></i>
 
-                            </div>
-                            <div class="message other-message float-right">
-                              {{msg.message}}
-                            </div>
-                          </li>
+                                </div>
+                                <div class="message other-message float-right">
+                                  {{msg.message}}
+                                </div>
+                              </li>
 <!-- receicer chat -->
                         {% else %}
                           <li>

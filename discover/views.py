@@ -10,12 +10,13 @@ from itertools import chain
 def discover(request):
     try:
         userdetails = signup.objects.get(username = request.session['username'])
+        all_info = signup.objects.all()
 
     except KeyError as e:
         return redirect("/login/")
 
     else:
-        if userdetails.location is None:
+        if userdetails.location is not None:
             model_user = model.vibes_friends(userdetails)
             predict_data = model_user.model_report()
             all_info = [signup.objects.get(uid = value) for value in predict_data]
