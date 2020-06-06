@@ -2,23 +2,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta name="viewport" content="width=device-width , user-scalable=no,initial-scal=1.0">
+    <meta name="viewport" content="width=device-width , user-scalable=no,initial-scale=1.0">
     <link rel="icon" href="{% static 'business/img/vibes.jpg' %}" type="image/jpg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="{% static '/groups/onegroup.css' %}">
-    <title>Groups | {{GroupName}}</title>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="{% static 'groups/onegroup.css' %}">
+    <script src="{% static 'groups/group.js' %}" charset="utf-8"></script>
+    <title>Groups | {{GroupName.group_name}}</title>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-
           <!-- start of main-bar -->
           <div class="group-logo">
             <img src="/media/{{groupinfor.group_icon}}" class="img img-responsive">
@@ -48,11 +48,73 @@
           </div>
           <!-- End of main-bar -->
             <div class="buttons">
-              <button type="button" name="button" class="display-small"> <a href="#">View Topics </a> </button>
+              <button type="button" name="button" class="display-small"> <a href="#group-topics">View Topics </a> </button>
               <button type="button" name="button" class="display-small"><a href="{% url 'messaging:messaging' groupadmin.uid %}">Chat Admin</a> </button>
             </div>
         </div>
       </div>
+
+      <!-- group data -->
+      <div class="topic-header">
+        <h1 class="group-topics">Posts</h1> <h1 class="group-topics">Treanding topics</h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <div id="allposts">
+          {% for post in group_topics %}
+              <div class="singlepost">
+                  <p class="profile">
+                    <img src="/media/{{post.poster.profilepic}}" alt="{{post.poster.username}}" title="{{post.poster.username}}">
+                  </p>
+                  <div class="singlepost-info">
+                      {{post.post_content}}
+                  </div>
+              </div>
+          {% endfor %}
+        </div>
+        <form class="postform" id="postform" action="{% url 'groups:post_to_group' GroupName.id %}" method="post">
+          {% csrf_token %}
+          <input type="text" id="postinput" name="post_content" required>
+          <input type="submit" name="submit" value="submit" id="submit" onclick="submit_post();">
+        </form>
+      </div>
+        <div class="col-sm-6">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+
     </div>
   </body>
+  <script type="text/javascript">
+  const url = window.location+"#postform";
+  function submit_post(){
+    let myform = document.querySelector("form");
+    let mysubmit = document.getElementById("submit")
+    mysubmit.addEventListener("click" , function(e){
+      e.preventDefault();
+      var form_data = new FormData(myform);
+      try {
+        var xmlobj = new XMLHttpRequest();
+      } catch (e) {
+        var xmlobj = new ActiveXObject();
+      } finally {
+        xmlobj.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var respdata = JSON.parse(this.responseText);
+            if(respdata.response){
+              document.getElementById("postinput").value ="";
+              nodecreator("0e6ca25820d9304e80dd26fa461059c6.jpg" , respdata.poster_name , respdata.responsetext);
+              window.location = url;
+            }
+          }
+        }
+        var data = document.getElementById('postinput').value;
+        xmlobj.open("POST" , "{% url 'groups:post_to_group' GroupName.id %}" , true);
+        xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+        xmlobj.send(form_data);
+      }
+    });
+  }
+
+  </script>
 </html>

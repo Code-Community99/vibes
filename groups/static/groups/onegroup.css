@@ -1,19 +1,15 @@
 *{
     background-color: #cacaca;
 }
-
 .main-bar{
   width: 60%;
   margin: 0px auto;
   background-color: inherit;
   display: flex;
 }
-
 .group-logo{
   margin-top: 5%;
 }
-
-
 .group-logo>img{
   display: block;
   margin: 0px auto;
@@ -36,106 +32,98 @@
 .group-logo>img:hover{
   animation: img-det 5s infinite;
 }
-
 .group-info{
   background-color: inherit;
   margin-top: 3%;
   flex: 1;
 }
-
-
 .member-info{
   background-color: inherit;
   margin-top: 3%;
   flex: 1;
   text-align: center;
 }
-
-
 .member-info>p{
   text-align: center;
 }
-
 .member-info>button{
   border:1px solid #00aada;
   font-weight: bold;
   color: #00aada;
 }
-
-
 .member-info>button>a{
   text-decoration: none;
 }
-
-
 .member-info>button:last-child{
   margin-left: 20%;
 }
-
 .divide{
   margin-top: 4%;
   border: 1px solid #00aada;
 }
-
-
 .small-screen{
   font-size: 25px;
 }
-
-
-
-
 .display-large{
   display: inline-block;
 }
 .display-small{
   display: none;
 }
+.postform {
+  margin-bottom: 70px;
+}
 
+.profile {
+  position: relative;
+  top: 0px;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.profile>img {
+  position: relative;
+  top: 0px;
+  left: 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: inline-block;
+}
 
-
-
-
-
-
-
+.singlepost-info {
+  display: inline-block;
+  margin-left: 20px;
+}
 @media screen and (max-width:1100px) {
-
-
-  .main-bar{
+.main-bar{
       width: 100%;
       margin: 0px auto;
       background-color: inherit;
       display: flex;
       background-color: inherit;
-    }
-
-
-    .divide{
+}
+.divide{
       margin-top: 4%;
       border: 1px solid green;
     }
-
-
-    .small-screen{
+.small-screen{
       font-size: 20px;
       font-weight: bold;
-    }
-
-    .group-info>p{
+}
+.group-info>p{
       text-align: left;
     }
-
-    .main-bar{
+.main-bar{
       margin-top: 30px;
     }
-
     .buttons{
       width: 60%;
       margin: 0px auto;
       display: flex;
     }
-
     .buttons>.display-small{
       margin-top: 30px;
       display: inline-block;
@@ -146,19 +134,15 @@
       text-decoration: none;
       margin-bottom: 40px;
     }
-
-
     .button>button:last-child{
       margin-left: 20%;
     }
     .display-small:first{
       margin-right: 100px;
     }
-
     .display-large{
       display: none;
     }
-
     .group-logo>img{
       display: block;
       width: 25vh;
@@ -167,22 +151,6 @@
       margin: 0px auto;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width:700px) {
 .main-bar{
     width: 100%;
@@ -191,35 +159,28 @@
     display: flex;
     background-color: inherit;
   }
-
-
   .divide{
     margin-top: 4%;
     border: 1px solid green;
   }
-
-
-  .small-screen{
+.small-screen{
     font-size: 20px;
     font-weight: bold;
   }
-
-  .group-info>p{
+.group-info>p{
     text-align: left;
     font-size: 10px;
   }
-
-  .main-bar{
+.main-bar{
     margin-top: 30px;
-  }
-
-  .buttons{
+}
+.buttons{
     width: 60%;
     margin: 0px auto;
     display: flex;
-  }
+}
 
-  .buttons>.display-small{
+.buttons>.display-small{
     margin-top: 30px;
     display: inline-block;
     width: 50vw;
@@ -227,27 +188,33 @@
     font-weight: bold;
     color: #00aada;
     text-decoration: none;
-  }
-
-
-  .button>button:last-child{
+}
+.button>button:last-child{
     margin-left: 20%;
   }
-  .display-small:first{
+.display-small:first{
     margin-right: 100px;
-  }
+}
 
-  .display-large{
+.display-large{
     display: none;
-  }
+}
 
-  .group-logo>img{
+.group-logo>img{
     width: 25vh;
     height: 25vh;
     border-radius: 50%;
     margin-left: 30.8%;
-  }
+}
   .member-info>p{
     font-size: 10px;
-  }
+}
+}
+.topic-header {
+  display: flex;
+}
+.group-topics {
+  text-align: center;
+  text-decoration: underline;
+  flex: 1;
 }
