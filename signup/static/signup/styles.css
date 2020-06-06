@@ -13,9 +13,6 @@ a{
 	text-decoration:none;
 	font-weight:bold;
 }
-
-
-
 form{
 	/* margin-top: 10%; */
 }
@@ -73,21 +70,16 @@ padding-top:10px;
 	display: block;
 	text-align: center;
 }
-
-
 .input{
 	display: block;
-	width: 40%;
+	width: 50%;
 	padding: 10px ;
-	margin: 3px auto;
+	margin: 10px auto;
 	border: 1px solid #c0c0c0;
 	display: block;
 	text-align: center;
-
 }
-
-button
-{
+button{
 	display: block;
 	width: 40%;
 	padding: 10px ;
@@ -97,9 +89,7 @@ button
 	text-align: center;
 	background-color: #3b5998;
 }
-
-.validation
-{
+.validation{
 	font-size: 14px;
 	display: block;
 	width: 40%;
@@ -110,7 +100,6 @@ button
 }
 
 #submit{
-
 	border: 2px solid #3b5998;
 	background-color:#3b5998;
 	margin: 0px auto;
@@ -130,4 +119,60 @@ button
 	margin-top:15px;
 	margin-left:45%;
 	border: 2px solid #3399ff;
+}
+
+.snap {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: #708b9aa6;
+	z-index: 10;
+	top: 0px;
+	left: 0px;
+	animation: swapspinner 2s 1;
+	display: none;
+}
+
+.snap>.spinnobject {
+	position: absolute;
+	top: 41%;
+	left: 38%;
+	font-size: 60px;
+}
+.spinner-man {
+	position: absolute;
+	top: 30%;
+	left: 45%;
+	right: 45%;
+	font-size: 60px;
+	display: block;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	border:15px solid grey;
+	border-top: 15px solid #add8e6;
+	/* border-bottom: 15px solid #000000; */
+	animation: spinneranim 3s  infinite;
+}
+
+@keyframes spinneranim {
+	0% {
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+@media only screen and (max-width:700px) {
+  .bony {
+		width: 100%;
+	}
+	.bon {
+		width: 85%;
+	}
+	.input {
+		width: 100%;
+		display: block;
+		margin: 20px auto;
+	}
 }
