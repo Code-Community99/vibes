@@ -24,7 +24,8 @@ def discover(request):
             model.predict_user_location(userdetails)
             model_user = model.vibes_friends(userdetails)
             predict_data = model_user.model_report()
-            all_info = [signup.objects.get(uid = value) for value in predict_data]
+            # print(predict_data)
+            # all_info = [signup.objects.get(uid = value) for value in predict_data]
 
         # .annotate(total=Sum("followercounter__user_follower" , "followingcounter__user_following")).order_by("-total")
         users = signup.objects.exclude(username = request.session['username']).annotate(follow = Count("followingcounter")  ,
