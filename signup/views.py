@@ -23,46 +23,41 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
         hobby = request.POST['hobby']
+        location = request.POST["location"]
         profilepic = request.FILES['profilepic']
         passwordflag = password_master(pass1 , pass2)
 
-        if passwordflag:
-            password = make_password(request.POST['pass1'])
-            if v.validate_email(email):
-                try:
-                    signmodel.objects.get(email = email)
-                except Exception as e:
-                    try:
-                        signmodel.objects.get(username = username)
-                    except Exception as e:
+        try:
+            signmodel.objects.get(username = username)
+        except Exception as e:
+            try:
+                signmodel.objects.get(email = email )
+            except Exception as e:
+                if v.validate_email(email):
+                    if passwordflag:
+                        password = make_password(request.POST['pass1'])
                         signmodel.objects.create(username = username , pnumber = pnumber , email = email , password = password ,
-                        hobby = hobby , profilepic = profilepic)
+                        hobby = hobby, location = location , profilepic = profilepic)
                         data_logger["redirect"] = "/login/"
                         data_logger["errors"] = False
                         data_logger = json.dumps(data_logger)
-                        # return HttpResponse(data_logger , content_type="application/json")
                     else:
-                        bugs["usernamevalid"]  = "User exists"
+                        bug["passwordvalid"] = "Password not correct"
                         data_logger["fields"] = json.dumps(bugs)
                         data_logger = json.dumps(data_logger)
-                        # return HttpResponse(data_logger , content_type="application/json")
-
                 else:
-                    bugs["usernamevalid"] = "User exists"
+                    bugs["emailvalid"] = "Email does not exists"
                     data_logger["fields"] = json.dumps(bugs)
                     data_logger = json.dumps(data_logger)
-                    # print("\n\n\n\n\n{}".format(data_logger))
-                    # return HttpResponse(data_logger, content_type="application/json")
             else:
-                bugs["emailvalid"] = "Email does not exists"
+                bugs["emailvalid"]  = "Another account is using that email"
                 data_logger["fields"] = json.dumps(bugs)
                 data_logger = json.dumps(data_logger)
-                # return HttpResponse(data_logger, content_type="application/json")
         else:
-            bug["passwordvalid"] = "Password not correct"
+            bugs["usernamevalid"] = "User exists"
             data_logger["fields"] = json.dumps(bugs)
             data_logger = json.dumps(data_logger)
-        return HttpResponse(data_logger, content_type="application/json")
+        return HttpResponse(data_logger ,  content_type="application/json")
     else:
         return render(request , "signup/signup.html")
 

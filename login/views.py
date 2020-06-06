@@ -92,7 +92,6 @@ def forgotcredetials(request):
                         obj.sendmail(sender,receiver,message)
 
                     except Exception as error:
-                        print("Error: {}".format(error))
                         bug_hunter.append("Connection could not be established")
                         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 

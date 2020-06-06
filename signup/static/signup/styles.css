@@ -125,7 +125,7 @@ button{
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background-color: #708b9aa6;
+	background-color: #2079718c;
 	z-index: 10;
 	top: 0px;
 	left: 0px;
@@ -151,7 +151,6 @@ button{
 	border-radius: 50%;
 	border:15px solid grey;
 	border-top: 15px solid #add8e6;
-	/* border-bottom: 15px solid #000000; */
 	animation: spinneranim 3s  infinite;
 }
 
