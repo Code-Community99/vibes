@@ -6,6 +6,7 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<title>Vibes | signup</title>
 	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
+	<script src="{% static 'signup/vibes.js' %}" charset="utf-8"></script>
 </head>
 <body>
 	<p>
@@ -15,7 +16,7 @@
 
 	<div class="bon">
 		<div class="bony">
-			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" onabort="cancel()">
+			<form action="{% url 'signup:signup' %}" method="post"  id="mysub" enctype="multipart/form-data" onabort="cancel()">
 
 				<h2>Signup to vibes</h2>
 					{% for error in error_log %}
@@ -24,134 +25,83 @@
 				</label>
 					{% endfor %}
 					{% csrf_token %}
-				<!-- <input type="hidden" name="_token" value="{{ csrf_token }}" id="tok"> -->
 				<input type="text" placeholder="Username" name = "username" required autocomplete="true" class="input" onchange="userauthentication()" id="uname">
 				<label id="usernamevalid" class="validation"></label>
 				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
+				<label id="phonevalid" class="validation"></label>
 				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
 				<label id="emailvalid" class="validation"></label>
 				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)">
 				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
+				<label id="passwordvalid" class="validation"></label>
 				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
+				<label id="hobbyvalid" class="validation"></label>
+				<input type="text" name="location" placeholder="location" required autocomplete="true" class="input" >
+				<label id="location" class="validation"></label>
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
 				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
-				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager()" onabort="cancel()">
+				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager();" onabort="cancel()">
 					Signup
 					<!-- <i class="" id="submit"></i> -->
 					<i class="" id="spin"></i>
 				</button>
-
-
 			</form>
-
 				<p style="text-align:center">
 					<span>Already have an account?</span>
 						<a class="link" href="{% url 'login:login' %}">
 						Sign in
 					</a>
 				</p>
-
-
 	</div>
 </div>
 
 		<footer>
 
     </footer>
+		<div class="snap" id="snap">
+				<!-- <p class="spinnobject">Loading <i id="dot1">.</i> <i id="dot2">.</i> <i id="dot3">.</i>	</p> -->
+				<p class="spinner-man"></p>
+		</div>
 </body>
 <script type="text/javascript">
-
 function cancel(){
-	alert("Hello world");
 	document.getElementById("spin").setAttribute("class" , "");
 }
-
-function spinnermanager()
-{
-
+function spinnermanager(){
 	if(document.getElementById("uname").value != "" && document.getElementById("phone").value != "" && document.getElementById("ema").value != "" && document.getElementById("pass1").value != "" &&  document.getElementById("pass2").value != "" &&
-	 document.getElementById("pass2").value !="" && document.getElementById("profile").value != "")
-	{
-
+	 document.getElementById("pass2").value !="" && document.getElementById("profile").value != ""){
 		document.getElementById("spin").setAttribute("class" , "fa fa-spinner fa-spin fa-1x");
 	}
 
-
-	// document.getElementById("submit").setAttribute("disabled");
-	// var csrf = document.getElementById("tok").value;
-	// var uname = document.getElementById("uname").value;
-	// var phone = document.getElementById("phone").value;
-	// var email = document.getElementById("ema").value;
-	// var password = document.getElementById("pass1").value;
-	// var hobby = document.getElementById("hobby").value;
-	// var profilepic = document.getElementById("profile").value;
-	//
-	//
-	//
-	// var xhttp = new XMLHttpRequest();
-	// xhttp.onreadystatechange = function()
-	// {
-	// 	if(this.readyState == 4 && this.status == 200)
-	// 	{
-	// 		document.getElementById("spin").setAttribute("class" , "");
-	// 			alert(this.responseText);
-	// 	}
-	// }
-	//
-	// xhttp.open("POST" , "/signup/" , true);
-	// var ck = document.cookie.split("=")[1];
-	// alert(ck);
-	// xhttp.setRequestHeader("X-CSRFToken" ,ck);
-	// xhttp.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-	// xhttp.send("username="+uname+"&pnumber="+phone+"&email="+email+"&password="+password+"&hobby="+hobby+"&profilepic"+profilepic);
-
 }
-
-
-
-function form_manager()
-{
+function form_manager(){
 	var flag = false;
+	spinner_manager();
 
-	if(document.getElementById("uname").value == "")
-	{
-
-		alert("Username blank");
+	if(document.getElementById("uname").value == ""){
+		document.getElementById("usernamevalid").innerHTML = "Hobby cannot be empty";
 	}
 
-	else if(document.getElementById("phone").value == "")
-	{
-
-		alert("phone blank");
+	else if(document.getElementById("phone").value == ""){
+		document.getElementById("phonevalid").innerHTML = "Hobby cannot be empty";
 	}
-	else if(document.getElementById("ema").value == "")
-	{
-
-		alert("email blank");
+	else if(document.getElementById("ema").value == ""){
+		document.getElementById("emailvalid").innerHTML = "Email cannot be empty";
 	}
-	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == "")
-	{
-
-		alert("pass1 blank");
+	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == ""){
+		document.getElementById("passwordvalid").innerHTML = "Password Cannot be blank"
 	}
-
-else if(document.getElementById("hobby").value == "")
-	{
-
-		alert("hobby blank");
+else if(document.getElementById("hobby").value == ""){
+	document.getElementById("hobbyvalid").innerHTML = "Hobby cannot be empty";
 	}
-	else if(document.getElementById("profile").value == "")
-	{
+	else if(document.getElementById("profile").value == ""){
 
 		alert("profile blank");
 	}
 	else {
 
 	}
-	spinnermanager();
 }
-
-
 	function passwordmaster()
 	{
 		var pass1 = document.getElementById("pass1").value;
@@ -166,14 +116,12 @@ else if(document.getElementById("hobby").value == "")
 						document.getElementById("pass2").innerHTML = "";
 						alert("password cannot be empty");
 					}
-
 				else if(pass1 != pass2)
 					{
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
 						alert("Password mismatch");
 					}
-
 				else {
 					if(pass1.length < 10)
 						{
@@ -184,21 +132,11 @@ else if(document.getElementById("hobby").value == "")
 					}
 			}
 	}
-
-
-
-
-
-
-
-
-// Verifcation
-	function userauthentication(uid)
-	{
+	// Verifcation
+	function userauthentication(uid){
 		var xhttp = new XMLHttpRequest();
 		var user = document.getElementById("uname").value;
-		xhttp.onreadystatechange = function()
-		{
+		xhttp.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200)
 			{
 				if(this.responseText == "true")
@@ -207,7 +145,6 @@ else if(document.getElementById("hobby").value == "")
 						document.getElementById("usernamevalid").style.color = "#f00";
 						// document.getElementById("submit").disabled=true;
 					}
-
 					else {
 						document.getElementById("usernamevalid").innerHTML = "username available";
 						document.getElementById("usernamevalid").style.color = "#7fa";
@@ -215,23 +152,18 @@ else if(document.getElementById("hobby").value == "")
 					}
 			}
 		};
-		xhttp.open("GET" ,'/signup/userauthentication/?username='+user , true);
-		xhttp.send();
-
+		xhttp.open("POST" ,'/signup/userauthentication/' , true);
+		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+		xhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xhttp.send("username="+user);
 	}
-
-
-
-	function emailauthentication(emid)
-	{
+	function emailauthentication(emid){
 		var xhttp = new XMLHttpRequest();
 		var email = document.getElementById("ema").value;
 		xhttp.onreadystatechange = function()
 		{
-			if(this.readyState == 4 && this.status == 200)
-			{
-				if(this.responseText == "true")
-				{
+			if(this.readyState == 4 && this.status == 200){
+				if(this.responseText == "true"){
 					document.getElementById("emailvalid").innerHTML = "Email in use by another account";
 					document.getElementById("emailvalid").style.color = "#f00";
 					// document.getElementById("submit").disabled=true;
@@ -242,7 +174,6 @@ else if(document.getElementById("hobby").value == "")
 					document.getElementById("emailvalid").style.color = "#7fa";
 					// document.getElementById("submit").enabled=true;
 				}
-
 				else{
 					document.getElementById("emailvalid").innerHTML = this.responseText;
 					document.getElementById("emailvalid").style.color = "#f00f00";
@@ -250,9 +181,47 @@ else if(document.getElementById("hobby").value == "")
 			}
 		};
 		// xhttp.responseType = "json";
-		xhttp.open("GET" , "/signup/emailauthentication/?email="+email , true);
-		xhttp.send();
+		xhttp.open("POST" , "/signup/emailauthentication/" , true);
+		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+		xhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xhttp.send("email="+email);
 	}
 
+	function spinner_manager() {
+		var myform = document.getElementById('mysub')
+		myform.addEventListener("click" , function(e){
+			e.preventDefault();
+		});
+	  document.getElementById('snap').setAttribute("style" ,"display:block;");
+	  try {
+	    var xmlobj  = new XMLHttpRequest();
+	  } catch (e) {
+	    var xmlobj = new ActiveXObject();
+	  } finally {
+	    xmlobj.onreadystatechange = function() {
+	      if (this.readyState == 4 && this.status == 200) {
+	        var servdata =JSON.parse(this.responseText);
+					if (servdata.errors){
+						document.getElementById('snap').setAttribute("style" ,"display:none;");
+						var fields_with_errors = JSON.parse(servdata.fields)
+						error_field_keys = Object.keys(fields_with_errors);
+						for (var i = 0; i < error_field_keys.length; i++) {
+								console.log(fields_with_errors[error_field_keys[i]])
+							document.getElementById(error_field_keys[i]).setAttribute("style" , "display:block")
+							document.getElementById(error_field_keys[i]).innerHTML = fields_with_errors[error_field_keys[i]];
+						}
+					}
+					else {
+						window.location = servdata.redirect;
+					}
+	      }
+	    }
+			var userinfo = document.querySelector("form");
+	    var data = new FormData(userinfo);
+	    xmlobj.open("POST" , "{% url 'signup:signup' %}" , true);
+	    xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+	    xmlobj.send(data);
+	  }
+	}
 </script>
 </html>

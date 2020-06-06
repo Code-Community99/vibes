@@ -10,6 +10,7 @@ class gform(ModelForm):
         widgets = {
         "group_name":TextInput(attrs = {"name":"GName" , "required":"True" , "maxlength":15}),
         "group_description":Textarea(attrs = {"name":"Description" , "rows":5 , "cols":24 , "required":True , "maxlength":100}),
+        # "group_icon":ImageArea(attrs={"name":"group_icon"})
         }
         labels = {
         "group_name":"Name",

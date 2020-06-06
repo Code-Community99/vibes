@@ -1,16 +1,13 @@
-*
-{
+*{
   background-color: #fafafa;
 }
-.row>.alldivs
-{
+.row>.alldivs{
   box-sizing: border-box;
   background-color: #fff;
   border: 1px solid blue;
   margin: 0px auto;
   margin-top: 10px;
 }
-
 .users{
   max-height: 90vh;
   overflow-y: auto;
@@ -27,7 +24,6 @@
   height: 50px;
   margin-bottom: 3vw;
 }
-
 .nav-bar{
   display: flex;
   margin-top: 10px;
@@ -45,8 +41,6 @@
   flex: 1;
   text-decoration: none;
 }
-
-
 .nav-bar>input{
   box-sizing: border-box;
   margin-top: 2%;
@@ -61,8 +55,6 @@
 .div-nav{
 	margin: 10px auto;
 }
-
-
 .div-nav>input{
 	margin-left: 0px;
 	box-sizing: border-box;
@@ -88,6 +80,7 @@
 }
 
 #groups{
+  display: block;
 	margin: 10px auto;
 	margin-left: 0px;
 }
@@ -146,13 +139,8 @@
   background-color: #fff;
 	background-color: inherit;
 	border:1px solid #00aada;
-	margin: 10px 0px 10px 0px;
+	/* margin: 10px 0px 10px 0px; */
 }
-
-
-
-
-
 .recentuser>label
 {
 	display: block;
@@ -173,10 +161,9 @@
 	margin-bottom: 30px;
 }
 
-.recentuser>.moreuserdata
-{
+.recentuser>.moreuserdata{
 	display: inline;
-	margin-left: 15px;
+	/* margin-left: 15px; */
   background-color: #fff;
 
 }
@@ -185,7 +172,7 @@
 {
 	display: block;
 	border:1px solid #00aada;
-	margin: 10px 0px 10px 0px;
+	/* margin: 10px 0px 10px 0px; */
 }
 
 
