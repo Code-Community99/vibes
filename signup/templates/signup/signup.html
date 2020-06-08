@@ -17,7 +17,6 @@
 	<div class="bon">
 		<div class="bony">
 			<form action="{% url 'signup:signup' %}" method="post"  id="mysub" enctype="multipart/form-data" onabort="cancel()">
-
 				<h2>Signup to vibes</h2>
 					{% for error in error_log %}
 					<label class="inputlabel">
@@ -29,12 +28,12 @@
 				<label id="usernamevalid" class="validation"></label>
 				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
 				<label id="phonevalid" class="validation"></label>
-				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
+				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema" required>
 				<label id="emailvalid" class="validation"></label>
 				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)">
 				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
 				<label id="passwordvalid" class="validation"></label>
-				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
+				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby" required>
 				<label id="hobbyvalid" class="validation"></label>
 				<input type="text" name="location" placeholder="location" required autocomplete="true" class="input" >
 				<label id="location" class="validation"></label>
@@ -77,11 +76,9 @@ function spinnermanager(){
 function form_manager(){
 	var flag = false;
 	spinner_manager();
-
 	if(document.getElementById("uname").value == ""){
 		document.getElementById("usernamevalid").innerHTML = "Hobby cannot be empty";
 	}
-
 	else if(document.getElementById("phone").value == ""){
 		document.getElementById("phonevalid").innerHTML = "Hobby cannot be empty";
 	}
@@ -188,7 +185,7 @@ else if(document.getElementById("hobby").value == ""){
 	}
 
 	function spinner_manager() {
-		var myform = document.getElementById('mysub')
+		var myform = document.getElementById('mysub');
 		myform.addEventListener("click" , function(e){
 			e.preventDefault();
 		});
