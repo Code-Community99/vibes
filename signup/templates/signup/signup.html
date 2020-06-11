@@ -3,61 +3,118 @@
 <html>
 <head>
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<title>Vibes | signup</title>
 	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
 	<script src="{% static 'signup/vibes.js' %}" charset="utf-8"></script>
 </head>
 <body>
-	<p>
-		<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo">
 
-	</p>
+<!-- left image background -->
+<div class="left-part">
+<img src="{% static 'signup/images/network.jpg' %}" alt="network background image">
+</div>	
 
-	<div class="bon">
-		<div class="bony">
-			<form action="{% url 'signup:signup' %}" method="post"  id="mysub" enctype="multipart/form-data" onabort="cancel()">
+<div class="right-part">
 
-				<h2>Signup to vibes</h2>
-					{% for error in error_log %}
-					<label class="inputlabel">
-						{{error}}
-				</label>
-					{% endfor %}
-					{% csrf_token %}
-				<input type="text" placeholder="Username" name = "username" required autocomplete="true" class="input" onchange="userauthentication()" id="uname">
-				<label id="usernamevalid" class="validation"></label>
-				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
-				<label id="phonevalid" class="validation"></label>
-				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
-				<label id="emailvalid" class="validation"></label>
-				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)">
-				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
-				<label id="passwordvalid" class="validation"></label>
-				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
-				<label id="hobbyvalid" class="validation"></label>
-				<input type="text" name="location" placeholder="location" required autocomplete="true" class="input" >
-				<label id="location" class="validation"></label>
-				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
-				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
-				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager();" onabort="cancel()">
-					Signup
-					<!-- <i class="" id="submit"></i> -->
-					<i class="" id="spin"></i>
-				</button>
-			</form>
-				<p style="text-align:center">
-					<span>Already have an account?</span>
-						<a class="link" href="{% url 'login:login' %}">
-						Sign in
-					</a>
-				</p>
+
+	
+			<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo">
+
+	
+
+		<!-- <div class="bon">
+			<div class="bony"> -->
+
+
+				<!-- <form action="{% url 'signup:signup' %}" method="post"  id="mysub" enctype="multipart/form-data" onabort="cancel()">
+
+					<h2>Signup to vibes</h2>
+						{% for error in error_log %}
+						<label class="inputlabel">
+							{{error}}
+					</label>
+						{% endfor %}
+						{% csrf_token %}
+					<input type="text" placeholder="Username" name = "username" required autocomplete="true" class="input" onchange="userauthentication()" id="uname">
+					<label id="usernamevalid" class="validation"></label>
+					<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
+					<label id="phonevalid" class="validation"></label>
+					<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
+					<label id="emailvalid" class="validation"></label>
+					<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)">
+					<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
+					<label id="passwordvalid" class="validation"></label>
+					<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
+					<label id="hobbyvalid" class="validation"></label>
+					<input type="text" name="location" placeholder="location" required autocomplete="true" class="input" >
+					<label id="location" class="validation"></label>
+					<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
+				<input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> 
+					<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager();" onabort="cancel()">
+						Signup
+						 <i class="" id="submit"></i> 
+						<i class="" id="spin"></i>
+					</button>
+				</form> -->
+
+				<form action="{% url 'signup:signup' %}" method="post"  id="mysub" class="formClass" enctype="multipart/form-data" onabort="cancel()">
+
+					<div class="join">
+						Join Vibes today
+					</div>
+
+					<div class="details">
+								{% for error in error_log %}
+								<label class="inputlabel">
+									{{error}}
+							</label>
+								{% endfor %}
+								{% csrf_token %}
+
+								<input type="text" placeholder="Enter Username" name = "username" required autocomplete="true" class="input newInput" onchange="userauthentication()" id="uname">
+							<label id="usernamevalid" class="validation"></label>
+
+							<input type="email" name="email" placeholder="Your email address" required autocomplete="true" class="input newInput" onchange="emailauthentication()" id="ema">
+							<label id="emailvalid" class="validation"></label>
+
+							<input type="text" name="location" placeholder="Enter Location" required autocomplete="true" class="input newInput" >
+							<label id="location" class="validation"></label>
+
+							<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input newInput" onchange="passwordmaster(pass1)">
+							
+							<input type="password" placeholder="Confirm Password" name="pass2" id="pass2" class="input newInput" onchange="passwordmaster(pass2)" required>
+							<label id="passwordvalid" class="validation"></label>
+					</div>
+					<div class="sign">
+
+					<button type="submit" name="submit" class="submit-btn" id="submit" onclick="form_manager();" onabort="cancel()">
+						Sign up
+						 <i class="" id="submit"></i> 
+						<i class="" id="spin"></i>
+					</button>
+
+					</div>
+
+					<p style="text-align:center">
+						<span>Already have an account?</span>
+							<a class="link" href="{% url 'login:login' %}">
+							Sign in
+						</a>
+					</p>
+
+				</form>
+
+					
+					
+		<!-- </div>
+	</div> -->
+
 	</div>
-</div>
 
-		<footer>
 
-    </footer>
+		
 		<div class="snap" id="snap">
 				<!-- <p class="spinnobject">Loading <i id="dot1">.</i> <i id="dot2">.</i> <i id="dot3">.</i>	</p> -->
 				<p class="spinner-man"></p>
@@ -68,8 +125,11 @@ function cancel(){
 	document.getElementById("spin").setAttribute("class" , "");
 }
 function spinnermanager(){
-	if(document.getElementById("uname").value != "" && document.getElementById("phone").value != "" && document.getElementById("ema").value != "" && document.getElementById("pass1").value != "" &&  document.getElementById("pass2").value != "" &&
-	 document.getElementById("pass2").value !="" && document.getElementById("profile").value != ""){
+	if(document.getElementById("uname").value != "" && 
+	document.getElementById("ema").value != "" && 
+	document.getElementById("pass1").value != "" && 
+	 document.getElementById("pass2").value != "")
+	  {
 		document.getElementById("spin").setAttribute("class" , "fa fa-spinner fa-spin fa-1x");
 	}
 
@@ -79,25 +139,26 @@ function form_manager(){
 	spinner_manager();
 
 	if(document.getElementById("uname").value == ""){
-		document.getElementById("usernamevalid").innerHTML = "Hobby cannot be empty";
+		document.getElementById("usernamevalid").innerHTML = "Username cannot be empty";
 	}
 
-	else if(document.getElementById("phone").value == ""){
-		document.getElementById("phonevalid").innerHTML = "Hobby cannot be empty";
-	}
+	// else if(document.getElementById("phone").value == ""){
+	// 	document.getElementById("phonevalid").innerHTML = "Hobby cannot be empty";
+	// }
 	else if(document.getElementById("ema").value == ""){
 		document.getElementById("emailvalid").innerHTML = "Email cannot be empty";
 	}
 	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == ""){
 		document.getElementById("passwordvalid").innerHTML = "Password Cannot be blank"
 	}
-else if(document.getElementById("hobby").value == ""){
-	document.getElementById("hobbyvalid").innerHTML = "Hobby cannot be empty";
-	}
-	else if(document.getElementById("profile").value == ""){
+// else if(document.getElementById("hobby").value == ""){
+// 	document.getElementById("hobbyvalid").innerHTML = "Hobby cannot be empty";
+// 	}
 
-		alert("profile blank");
-	}
+	// else if(document.getElementById("profile").value == ""){
+
+	// 	alert("profile blank");
+	// }
 	else {
 
 	}
