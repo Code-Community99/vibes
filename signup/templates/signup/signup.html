@@ -73,19 +73,31 @@
 								{% endfor %}
 								{% csrf_token %}
 
-								<input type="text" placeholder="Enter Username" name = "username" required autocomplete="true" class="input newInput" onchange="userauthentication()" id="uname">
+								<div class="inputDiv">
+									<input type="text" placeholder="Enter Username" name = "username" required autocomplete="true" class="input newInput" onchange="userauthentication()" id="uname">
 							<label id="usernamevalid" class="validation"></label>
-
+								</div>
+								
+								<div class="inputDiv">
 							<input type="email" name="email" placeholder="Your email address" required autocomplete="true" class="input newInput" onchange="emailauthentication()" id="ema">
 							<label id="emailvalid" class="validation"></label>
+									</div>
 
+									<div class="inputDiv">
 							<input type="text" name="location" placeholder="Enter Location" required autocomplete="true" class="input newInput" >
 							<label id="location" class="validation"></label>
-
+										</div>
+									
+									<div class="inputDiv">
 							<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input newInput" onchange="passwordmaster(pass1)">
-							
+									</div>
+
+									<div class="inputDiv">
 							<input type="password" placeholder="Confirm Password" name="pass2" id="pass2" class="input newInput" onchange="passwordmaster(pass2)" required>
 							<label id="passwordvalid" class="validation"></label>
+										</div>
+
+
 					</div>
 					<div class="sign">
 
@@ -121,6 +133,11 @@
 		</div>
 </body>
 <script type="text/javascript">
+// variables for labels
+
+//let lblUser = document.getElementById("usernamevalid");
+//let lblEmail = document.getElementById("emailvalid");
+
 function cancel(){
 	document.getElementById("spin").setAttribute("class" , "");
 }
@@ -204,11 +221,14 @@ function form_manager(){
 					{
 						document.getElementById("usernamevalid").innerHTML = "username taken";
 						document.getElementById("usernamevalid").style.color = "#f00";
+						// lblUser.classList.add("animate");
 						// document.getElementById("submit").disabled=true;
 					}
 					else {
 						document.getElementById("usernamevalid").innerHTML = "username available";
-						document.getElementById("usernamevalid").style.color = "#7fa";
+						document.getElementById("usernamevalid").style.color = "#187075";
+						//lblUser.classList.add("animate");
+
 						// document.getElementById("submit").enabled=true;
 					}
 			}
@@ -225,14 +245,14 @@ function form_manager(){
 		{
 			if(this.readyState == 4 && this.status == 200){
 				if(this.responseText == "true"){
-					document.getElementById("emailvalid").innerHTML = "Email in use by another account";
+					document.getElementById("emailvalid").innerHTML = "email in use by other account";
 					document.getElementById("emailvalid").style.color = "#f00";
 					// document.getElementById("submit").disabled=true;
 				}
 
 				else if(this.responseText == "false"){
 					document.getElementById("emailvalid").innerHTML = "email available";
-					document.getElementById("emailvalid").style.color = "#7fa";
+					document.getElementById("emailvalid").style.color = "#187075";
 					// document.getElementById("submit").enabled=true;
 				}
 				else{

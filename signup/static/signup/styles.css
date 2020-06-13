@@ -3,7 +3,7 @@
 	margin:0px;
 	font-family:Poppins,arial,sans-serif;
 	box-sizing:border-box;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 
@@ -45,24 +45,72 @@ body{
 	align-items: center;
 	max-width: 600px;
 }
-.newInput{
-	max-width: 320px;
+.inputDiv{
+	max-width: 300px;
     min-width: 200px;
 	background: white;
     border-radius: 25px;
-    border: 2px solid #1dadb6;
+	border: 2px solid #1dadb6;
+	width: 60%;
+	padding: 8px;
+	position: relative;
+	
 }
+
+.inputlabel{
+	font-size: 15px;
+	color: rgb(24, 112, 117);
+	    font-weight: 500;
+    letter-spacing: .5px;
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    background-color: #fff;
+	padding: 0px 5px;
+
+}
+.animate{
+	animation: labelAnime 7s .1s ease-in-out forwards;
+
+}
+
 .sign{
 	width: 50%;
+	margin: 10px;
 }
 .submit-btn{
 	width: 100%;
-    padding: 13px;
+    padding: 7px;
     border: none;
     border-radius: 25px;
     background: #1dadb6;
 	cursor: pointer;
 	text-transform: uppercase;
+}
+.submit-btn:hover{
+background:#116066;
+}
+.validation{
+	color: #187075;
+	    font-weight: 500;
+    letter-spacing: .5px;
+	font-size: 15px;
+
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    background-color: #fff;
+	padding: 0px 5px;
+	animation: labelAnime .7s .1s ease-in-out forwards;
+}
+.input{
+	width: 100%;
+	border: none;
+	outline: none;
+	background: #fff;
+}
+input{
+	background-color: #fff;
 }
 
 
@@ -74,7 +122,8 @@ a{
 }
 
 .link{
-	color:#3b5998;
+	color:#28b5e0;
+	font-weight: 700;
 }
 
 #forgot{
@@ -117,35 +166,14 @@ padding-top:10px;
    margin: 5px 0px;
 }
 
-.inputlabel
-{
-	display: block;
-	width: 40%;
-	padding: 10px ;
-	margin: 10px auto;
-	color: red;
-	display: block;
-	text-align: center;
-}
-.input{
-	width: 65%;
-	padding: 15px ;
-	
-	
-}
+
+
 button{
 	
 	text-align: center;
-	background-color: #3b5998;
-}
-.validation{
-	font-size: 14px;
-	display: block;
 	
-	color: red;
-	display: block;
-	text-align: center;
 }
+
 
  #submit{
 	border: 2px solid #1dadb6;
@@ -153,8 +181,7 @@ button{
 	
 	margin: 0px auto;
 	color:white;
-	font-size: 19px;
-	font-weight: bold;
+	
 	cursor: pointer;
 } 
 
@@ -209,6 +236,17 @@ button{
 		transform: rotate(360deg);
 	}
 }
+@keyframes labelAnime{
+0%{
+transform: translateY(2rem);
+opacity: 0;
+}
+100%{
+	transform: none;
+	opacity: 1;
+
+}
+}
 @media only screen and (max-width:750px) {
   /* .bony {
 		width: 100%;
@@ -221,12 +259,32 @@ button{
 		display: block;
 		margin: 20px auto;
 	} */
+	*{
+		font-size: 15px;
+	}
 	.left-part{
 		display: none;
 	}
+	.details{
+		flex-grow: 1;
+	}
 	.right-part{
+		
 		color: #fff;
 		width: 100%;
-		background: url("/signup/static/signup/images/network.jpg");
+		background: url("../signup/images/network.jpg");
+		background-size: cover;
+	}
+	.input {
+		width: 88%;
+		padding: 5px;
+	}
+	.submit-btn{
+		font-weight: 500;
+		padding: 8px;
+	}
+	#photo{
+		width: 84px;
+		height: 84px;
 	}
 }
