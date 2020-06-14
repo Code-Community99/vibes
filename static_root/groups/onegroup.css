@@ -70,20 +70,32 @@
 .display-small{
   display: none;
 }
+.postform {
+  margin-bottom: 70px;
+}
 
 .profile {
-  position: absolute;
+  position: relative;
   top: 0px;
-  left: 30px;
+  left: 10px;
   width: 100px;
   height: 100px;
+  border-radius: 50%;
+  display: inline-block;
 }
 .profile>img {
-  position: absolute;
+  position: relative;
   top: 0px;
-  left: 30px;
-  width: 100px;
-  height: 100px;
+  left: 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.singlepost-info {
+  display: inline-block;
+  margin-left: 20px;
 }
 @media screen and (max-width:1100px) {
 .main-bar{
