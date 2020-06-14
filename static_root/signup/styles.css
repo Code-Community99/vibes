@@ -200,7 +200,8 @@ button{
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background-color: #2079718c;
+	/* background-color: #2079718c; */
+	background-color: #207971d9;
 	z-index: 10;
 	top: 0px;
 	left: 0px;
