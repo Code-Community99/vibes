@@ -8,6 +8,6 @@ from .models import signup
 class admininterface(admin.ModelAdmin):
 
     model = signup
-    list_display = ("email" , "username" , "pnumber" , "location" , "hobby" , "profilepic" , "password")
+    list_display = ("email" , "username"  , "location" , "hobby" , "profilepic" , "password")
 
 admin.site.register(signup, admininterface)

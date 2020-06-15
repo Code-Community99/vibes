@@ -8,7 +8,7 @@
 
 
 /* new styles */
-body{ 
+body{
 	display: flex;
 	background-color:#f0f0f0;
 	min-height: 100vh;
@@ -34,7 +34,7 @@ body{
     justify-content: space-around;
     align-items: center;
     flex-grow: .7;
-    width: 100%;	
+    width: 100%;
 }
 .details{
 	flex-grow: .6;
@@ -54,9 +54,10 @@ body{
 	width: 60%;
 	padding: 8px;
 	position: relative;
-	
 }
-
+.inputDiv >input {
+	text-align: center;
+}
 .inputlabel{
 	font-size: 15px;
 	color: rgb(24, 112, 117);
@@ -115,6 +116,8 @@ input{
 
 
 
+
+
 a{
 	color: #456;
 	text-decoration:none;
@@ -169,21 +172,21 @@ padding-top:10px;
 
 
 button{
-	
+
 	text-align: center;
-	
+
 }
 
 
  #submit{
 	border: 2px solid #1dadb6;
 	 background: #1dadb6;
-	
+
 	margin: 0px auto;
 	color:white;
-	
+
 	cursor: pointer;
-} 
+}
 
 #photo{
 	width: 100px;
@@ -191,7 +194,6 @@ button{
 	border-radius:50%;
 	background: green;
 	position:center;
-	
 	border: 2px solid #3399ff;
 }
 
@@ -199,7 +201,8 @@ button{
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background-color: #2079718c;
+	/* background-color: #2079718c; */
+	background-color: #207971d9;
 	z-index: 10;
 	top: 0px;
 	left: 0px;
@@ -223,8 +226,8 @@ button{
 	width: 110px;
 	height: 110px;
 	border-radius: 50%;
-	border:15px solid grey;
-	border-top: 15px solid #add8e6;
+	border:3px solid grey;
+	border-top: 3px solid #add8e6;
 	animation: spinneranim 3s  infinite;
 }
 
@@ -269,7 +272,6 @@ opacity: 0;
 		flex-grow: 1;
 	}
 	.right-part{
-		
 		color: #fff;
 		width: 100%;
 		background: url("../signup/images/network.jpg");

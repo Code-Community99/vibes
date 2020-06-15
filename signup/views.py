@@ -18,7 +18,6 @@ def signup(request):
     data_logger["errors"] = True
     if request.method == "POST":
         username = request.POST['username']
-        pnumber = request.POST['pnumber']
         email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
@@ -36,7 +35,7 @@ def signup(request):
                 if v.validate_email(email):
                     if passwordflag:
                         password = make_password(request.POST['pass1'])
-                        signmodel.objects.create(username = username , pnumber = pnumber , email = email , password = password ,
+                        signmodel.objects.create(username = username, email = email , password = password ,
                         hobby = hobby, location = location , profilepic = profilepic)
                         data_logger["redirect"] = "/login/"
                         data_logger["errors"] = False

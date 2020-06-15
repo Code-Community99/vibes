@@ -91,11 +91,12 @@
   </body>
   <script type="text/javascript">
   const url = window.location+"#postform";
+  let mysubmit = document.getElementById("submit");
+  mysubmit.addEventListener("click" , function(e){
+    e.preventDefault();
+  });
   function submit_post(){
     let myform = document.querySelector("form");
-    let mysubmit = document.getElementById("submit")
-    mysubmit.addEventListener("click" , function(e){
-      e.preventDefault();
       var form_data = new FormData(myform);
       try {
         var xmlobj = new XMLHttpRequest();
@@ -117,7 +118,6 @@
         xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
         xmlobj.send(form_data);
       }
-    });
   }
 
   </script>

@@ -5,66 +5,21 @@
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<title>Vibes | signup</title>
+	<title>Vibes | Signup</title>
 	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
 	<script src="{% static 'signup/vibes.js' %}" charset="utf-8"></script>
 </head>
 <body>
-
 <!-- left image background -->
 <div class="left-part">
 <img src="{% static 'signup/images/network.jpg' %}" alt="network background image">
-</div>	
-
+</div>
 <div class="right-part">
-
-
-	
 			<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo">
-
-	
-
-		<!-- <div class="bon">
-			<div class="bony"> -->
-
-
-				<!-- <form action="{% url 'signup:signup' %}" method="post"  id="mysub" enctype="multipart/form-data" onabort="cancel()">
-
-					<h2>Signup to vibes</h2>
-						{% for error in error_log %}
-						<label class="inputlabel">
-							{{error}}
-					</label>
-						{% endfor %}
-						{% csrf_token %}
-					<input type="text" placeholder="Username" name = "username" required autocomplete="true" class="input" onchange="userauthentication()" id="uname">
-					<label id="usernamevalid" class="validation"></label>
-					<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
-					<label id="phonevalid" class="validation"></label>
-					<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
-					<label id="emailvalid" class="validation"></label>
-					<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)">
-					<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
-					<label id="passwordvalid" class="validation"></label>
-					<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
-					<label id="hobbyvalid" class="validation"></label>
-					<input type="text" name="location" placeholder="location" required autocomplete="true" class="input" >
-					<label id="location" class="validation"></label>
-					<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
-				<input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> 
-					<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager();" onabort="cancel()">
-						Signup
-						 <i class="" id="submit"></i> 
-						<i class="" id="spin"></i>
-					</button>
-				</form> -->
-
-				<form action="{% url 'signup:signup' %}" method="post"  id="mysub" class="formClass" enctype="multipart/form-data" onabort="cancel()">
-
+				<form action="{% url 'signup:signup' %}" method="post"  id="mysub" class="formClass" enctype="multipart/form-data">
 					<div class="join">
 						Join Vibes today
 					</div>
-
 					<div class="details">
 								{% for error in error_log %}
 								<label class="inputlabel">
@@ -77,159 +32,110 @@
 									<input type="text" placeholder="Enter Username" name = "username" required autocomplete="true" class="input newInput" onchange="userauthentication()" id="uname">
 							<label id="usernamevalid" class="validation"></label>
 								</div>
-								
 								<div class="inputDiv">
-							<input type="email" name="email" placeholder="Your email address" required autocomplete="true" class="input newInput" onchange="emailauthentication()" id="ema">
-							<label id="emailvalid" class="validation"></label>
+										<input type="email" name="email" placeholder="Your email address" required autocomplete="true" class="input newInput" onchange="emailauthentication()" id="ema">
+										<label id="emailvalid" class="validation"></label>
 									</div>
-
 									<div class="inputDiv">
-							<input type="text" name="location" placeholder="Enter Location" required autocomplete="true" class="input newInput" >
-							<label id="location" class="validation"></label>
+												<input type="text" name="hobby" placeholder="Enter hobby" required autocomplete="true" class="input newInput" >
+												<label id="location" class="validation"></label>
 										</div>
-									
 									<div class="inputDiv">
-							<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input newInput" onchange="passwordmaster(pass1)">
+											<input type="text" name="location" placeholder="Enter Location" required autocomplete="true" class="input newInput" >
+											<label id="location" class="validation"></label>
+										</div>
+									<div class="inputDiv">
+											<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input newInput" autocomplete="username">
+											<label id="mainpasswordvalid" class="validation"></label>
 									</div>
-
 									<div class="inputDiv">
-							<input type="password" placeholder="Confirm Password" name="pass2" id="pass2" class="input newInput" onchange="passwordmaster(pass2)" required>
-							<label id="passwordvalid" class="validation"></label>
+											<input type="password" placeholder="Confirm Password" name="pass2" id="pass2" class="input newInput" required autocomplete="username">
+											<label id="passwordvalid" class="validation"></label>
 										</div>
-
-
+										<div class="inputDiv">
+												<input type="file" placeholder="profilepic" name="profilepic" id="profilepic" class="input newInput" required>
+												<label id="profilepicvalid" class="validation"></label>
+											</div>
 					</div>
 					<div class="sign">
-
-					<button type="submit" name="submit" class="submit-btn" id="submit" onclick="form_manager();" onabort="cancel()">
-						Sign up
-						 <i class="" id="submit"></i> 
-						<i class="" id="spin"></i>
-					</button>
-
+						<button type="submit" name="submit" class="submit-btn" id="submit">
+								Sign up
+								 <i class="" id="submit"></i>
+								<i class="" id="spin"></i>
+						</button>
 					</div>
-
 					<p style="text-align:center">
 						<span>Already have an account?</span>
 							<a class="link" href="{% url 'login:login' %}">
 							Sign in
 						</a>
 					</p>
-
 				</form>
-
-					
-					
-		<!-- </div>
-	</div> -->
-
 	</div>
-
-
-		
 		<div class="snap" id="snap">
-				<!-- <p class="spinnobject">Loading <i id="dot1">.</i> <i id="dot2">.</i> <i id="dot3">.</i>	</p> -->
 				<p class="spinner-man"></p>
 		</div>
 </body>
 <script type="text/javascript">
-// variables for labels
-
-//let lblUser = document.getElementById("usernamevalid");
-//let lblEmail = document.getElementById("emailvalid");
-
-function cancel(){
-	document.getElementById("spin").setAttribute("class" , "");
+var validate_data = {
+				"username":false,
+				"email":false,
+				"hobby":false,
+				"pass":false,
 }
-function spinnermanager(){
-	if(document.getElementById("uname").value != "" && 
-	document.getElementById("ema").value != "" && 
-	document.getElementById("pass1").value != "" && 
-	 document.getElementById("pass2").value != "")
-	  {
-		document.getElementById("spin").setAttribute("class" , "fa fa-spinner fa-spin fa-1x");
-	}
-
-}
-function form_manager(){
-	var flag = false;
-	spinner_manager();
-
-	if(document.getElementById("uname").value == ""){
-		document.getElementById("usernamevalid").innerHTML = "Username cannot be empty";
-	}
-
-	// else if(document.getElementById("phone").value == ""){
-	// 	document.getElementById("phonevalid").innerHTML = "Hobby cannot be empty";
-	// }
-	else if(document.getElementById("ema").value == ""){
-		document.getElementById("emailvalid").innerHTML = "Email cannot be empty";
-	}
-	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == ""){
-		document.getElementById("passwordvalid").innerHTML = "Password Cannot be blank"
-	}
-// else if(document.getElementById("hobby").value == ""){
-// 	document.getElementById("hobbyvalid").innerHTML = "Hobby cannot be empty";
-// 	}
-
-	// else if(document.getElementById("profile").value == ""){
-
-	// 	alert("profile blank");
-	// }
-	else {
-
-	}
-}
-	function passwordmaster()
-	{
-		var pass1 = document.getElementById("pass1").value;
-		var pass2 = document.getElementById("pass2").value;
-
-		if(pass1 != "" && pass2 != "")
-			{
-
-				if(pass1 == "" || pass2 == "")
-					{
-						document.getElementById("pass1").innerHTML = "";
-						document.getElementById("pass2").innerHTML = "";
-						alert("password cannot be empty");
-					}
-				else if(pass1 != pass2)
-					{
-						document.getElementById("pass1").innerHTML = "";
-						document.getElementById("pass2").innerHTML = "";
-						alert("Password mismatch");
-					}
-				else {
-					if(pass1.length < 10)
-						{
-							document.getElementById("pass2").innerHTML = "";
-							document.getElementById("pass1").innerHTML = "";
-							alert("Short password");
+	document.querySelector("#submit").addEventListener("click" , function(e){
+		var myform = document.getElementById('mysub')
+		myform.addEventListener("click" , function(e){
+			e.preventDefault();
+		});
+	  document.getElementById('snap').setAttribute("style" ,"display:block;");
+		try {
+	    var xmlobj  = new XMLHttpRequest();
+	  } catch (e) {
+	    var xmlobj = new ActiveXObject();
+	  } finally {
+	    if (document.getElementById("pass1").value =="" || document.getElementById("pass2").value =="") {
+				document.getElementById('snap').setAttribute("style" ,"display:none;");
+	    }else {
+					xmlobj.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							var servdata =JSON.parse(this.responseText);
+							if (servdata.errors){
+								document.getElementById('snap').setAttribute("style" ,"display:none;");
+								var fields_with_errors = JSON.parse(servdata.fields)
+								error_field_keys = Object.keys(fields_with_errors);
+								for (var i = 0; i < error_field_keys.length; i++) {
+										// console.log(fields_with_errors[error_field_keys[i]])
+									document.getElementById(error_field_keys[i]).setAttribute("style" , "display:block")
+									document.getElementById(error_field_keys[i]).innerHTML = fields_with_errors[error_field_keys[i]];
+								}
+							}
+							else {
+								window.location = servdata.redirect;
+							}
 						}
 					}
+					var userinfo = document.querySelector("form");
+					var data = new FormData(userinfo);
+					xmlobj.open("POST" , "{% url 'signup:signup' %}" , true);
+					xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+					xmlobj.send(data);
 			}
-	}
+	  }
+	})
 	// Verifcation
 	function userauthentication(uid){
 		var xhttp = new XMLHttpRequest();
 		var user = document.getElementById("uname").value;
 		xhttp.onreadystatechange = function(){
-			if(this.readyState == 4 && this.status == 200)
-			{
-				if(this.responseText == "true")
-					{
+			if(this.readyState == 4 && this.status == 200){
+				if(this.responseText == "true"){
 						document.getElementById("usernamevalid").innerHTML = "username taken";
 						document.getElementById("usernamevalid").style.color = "#f00";
-						// lblUser.classList.add("animate");
-						// document.getElementById("submit").disabled=true;
 					}
 					else {
 						document.getElementById("usernamevalid").innerHTML = "username available";
 						document.getElementById("usernamevalid").style.color = "#187075";
-						//lblUser.classList.add("animate");
-
-						// document.getElementById("submit").enabled=true;
 					}
 			}
 		};
@@ -241,23 +147,20 @@ function form_manager(){
 	function emailauthentication(emid){
 		var xhttp = new XMLHttpRequest();
 		var email = document.getElementById("ema").value;
-		xhttp.onreadystatechange = function()
-		{
+		xhttp.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
 				if(this.responseText == "true"){
 					document.getElementById("emailvalid").innerHTML = "email in use by other account";
 					document.getElementById("emailvalid").style.color = "#f00";
-					// document.getElementById("submit").disabled=true;
 				}
 
 				else if(this.responseText == "false"){
 					document.getElementById("emailvalid").innerHTML = "email available";
 					document.getElementById("emailvalid").style.color = "#187075";
-					// document.getElementById("submit").enabled=true;
 				}
 				else{
 					document.getElementById("emailvalid").innerHTML = this.responseText;
-					document.getElementById("emailvalid").style.color = "#f00f00";
+					document.getElementById("emailvalid").style.color = "#f00";
 				}
 			}
 		};
@@ -267,42 +170,6 @@ function form_manager(){
 		xhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		xhttp.send("email="+email);
 	}
-
-	function spinner_manager() {
-		var myform = document.getElementById('mysub')
-		myform.addEventListener("click" , function(e){
-			e.preventDefault();
-		});
-	  document.getElementById('snap').setAttribute("style" ,"display:block;");
-	  try {
-	    var xmlobj  = new XMLHttpRequest();
-	  } catch (e) {
-	    var xmlobj = new ActiveXObject();
-	  } finally {
-	    xmlobj.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
-	        var servdata =JSON.parse(this.responseText);
-					if (servdata.errors){
-						document.getElementById('snap').setAttribute("style" ,"display:none;");
-						var fields_with_errors = JSON.parse(servdata.fields)
-						error_field_keys = Object.keys(fields_with_errors);
-						for (var i = 0; i < error_field_keys.length; i++) {
-								console.log(fields_with_errors[error_field_keys[i]])
-							document.getElementById(error_field_keys[i]).setAttribute("style" , "display:block")
-							document.getElementById(error_field_keys[i]).innerHTML = fields_with_errors[error_field_keys[i]];
-						}
-					}
-					else {
-						window.location = servdata.redirect;
-					}
-	      }
-	    }
-			var userinfo = document.querySelector("form");
-	    var data = new FormData(userinfo);
-	    xmlobj.open("POST" , "{% url 'signup:signup' %}" , true);
-	    xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-	    xmlobj.send(data);
-	  }
-	}
 </script>
+<script src="{% static 'signup/signup.js' %}" charset="utf-8"></script>
 </html>
