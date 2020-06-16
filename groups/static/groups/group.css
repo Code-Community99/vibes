@@ -1,35 +1,22 @@
-*
-{
+*{
   background-color: #fafafa;
 }
-
-
-
-.row>.alldivs
-{
+.row>.alldivs{
   box-sizing: border-box;
   background-color: #fff;
   border: 1px solid blue;
   margin: 0px auto;
   margin-top: 10px;
 }
-
-.users
-{
-  overflow-y: scroll;
-  max-height: 60vh;
+.users{
+  max-height: 90vh;
+  overflow-y: auto;
 }
-
-
-
-
-.logo
-{
+.logo{
   display: inline;
   flex:1;
 }
-.logo>img
-{
+.logo>img{
   color: #fff;
   box-sizing: border-box;
   border-radius: 10%;
@@ -37,9 +24,7 @@
   height: 50px;
   margin-bottom: 3vw;
 }
-
-.nav-bar
-{
+.nav-bar{
   display: flex;
   margin-top: 10px;
   color: #000;
@@ -48,8 +33,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-.nav-bar>a
-{
+.nav-bar>a{
   box-sizing: border-box;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -57,10 +41,7 @@
   flex: 1;
   text-decoration: none;
 }
-
-
-.nav-bar>input
-{
+.nav-bar>input{
   box-sizing: border-box;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -71,18 +52,10 @@
   background-color: #fff;
   /* height: 100%; */
 }
-
-
-
-.div-nav
-{
+.div-nav{
 	margin: 10px auto;
-
 }
-
-
-.div-nav>input
-{
+.div-nav>input{
 	margin-left: 0px;
 	box-sizing: border-box;
   margin-top: 2%;
@@ -93,11 +66,7 @@
   text-align: center;
   background-color: #fff;
 }
-
-
-
-.upper-label
-{
+.upper-label{
 	width: 100%;
 	margin-left: 0px;
 	box-sizing: border-box;
@@ -110,63 +79,43 @@
   background-color: #fff;
 }
 
-#groups
-{
-
+#groups{
+  display: block;
 	margin: 10px auto;
-	margin-left: 50px;
+	margin-left: 0px;
 }
 
-.viewmore
-{
+.viewmore{
 	min-height: 10px;
 }
-
-
-.viewmore>a
-{
+.viewmore>a{
 	text-align: right;
 }
-
-
-
-.user>label
-{
+.user>label{
 	display: block;
 	font-weight: bold;
 	margin-left: 20px;
 	margin-top: 5px;
   background-color: #fff;
 }
-
-
-
-.user>img
-{
+.user>img{
 	width: 70px;
 	height: 70px;
 	border-radius: 50%;
 	margin-bottom: 30px;
 }
 
-.user>p
-{
+.user>p{
 	display: inline;
 	margin-left: 15px;
   background-color: #fff;
-
 }
 
 
-.user
-{
+.user{
 	border-bottom: 1px solid #c0c0c0;
   background-color: #fff;
 }
-
-
-
-
 .imgg>img
 {
 	width: 70px;
@@ -190,13 +139,8 @@
   background-color: #fff;
 	background-color: inherit;
 	border:1px solid #00aada;
-	margin: 10px 0px 10px 0px;
+	/* margin: 10px 0px 10px 0px; */
 }
-
-
-
-
-
 .recentuser>label
 {
 	display: block;
@@ -217,10 +161,9 @@
 	margin-bottom: 30px;
 }
 
-.recentuser>.moreuserdata
-{
+.recentuser>.moreuserdata{
 	display: inline;
-	margin-left: 15px;
+	/* margin-left: 15px; */
   background-color: #fff;
 
 }
@@ -229,7 +172,7 @@
 {
 	display: block;
 	border:1px solid #00aada;
-	margin: 10px 0px 10px 0px;
+	/* margin: 10px 0px 10px 0px; */
 }
 
 
@@ -237,4 +180,25 @@
 {
 	border-bottom: 1px solid #c0c0c0;
   background-color: #fff;
+}
+
+.groups{
+    max-height: 90vh;
+  overflow: auto;
+}
+.users{
+  left: 0px;
+  position: fixed;
+}
+.groups{
+  right: 0px;
+  position: fixed;
+}
+
+
+
+@media only screen and (max-width:700px) {
+  .group-header{
+    display: none;
+  }
 }

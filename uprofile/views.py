@@ -5,7 +5,7 @@ from signup.models import signup
 from .forms import eventfrm as eventform
 from .models import events
 from discover.models import Followers
-
+from vmessages.models import MsgContent as mg
 
 
 def profile(request):
@@ -18,11 +18,9 @@ def profile(request):
 
     else:
         userinfo = signup.objects.get(username = userinfo)
-
+        newmessages = mg.objects.filter(readStatus = False).count()
         evnt = events.objects.all()
-        print(evnt)
-
-        return render(request , "uprofile/uprofile.html" , context = {"userinfo":userinfo , "evnt":evnt})
+        return render(request , "uprofile/uprofile.html" , context = {"userinfo":userinfo , "evnt":evnt , "newmessages":newmessages})
 
 
 

@@ -2,9 +2,9 @@ from django.shortcuts import render ,redirect
 from .models import MsgContent
 from django.http import HttpResponse
 from signup.models import signup
-from django.db.models import Count ,Q
+from django.db.models import Count ,Q,Sum
 # Create your views here.
-
+from itertools import chain
 
 def display(request):
     # url = ""
@@ -13,7 +13,7 @@ def display(request):
     except Exception as e:
         return redirect("/login/")
     else:
-        peoples = signup.objects.all()
+        peoples = signup.objects.all().exclude(username=request.session["username"])
         list = []
         cou = 0
         for people in peoples:
@@ -23,78 +23,49 @@ def display(request):
                 counter = MsgContent.objects.filter(ruid_id = peopleId , readStatus = 0).order_by("postTime")
                 for c in counter:
                     x = x+1
-                    # print(c)
                 list.append(x)
                 people.id= list[cou]
-                # print(counter.last().postTime)
                 people.date = counter.last().postTime
                 people.msg = counter.last().message
             except Exception as e:
                 people.date = ""
                 people.msg = ""
-            # print(people.uid)
-            # print(counter.last().message)
             cou = cou +1
         senderName = request.session["username"]
         return render(request , "messages/people.html" , {"peoples":peoples , "senderName":senderName})
 
+
+def messagefilter(myid):
+    refined_data = list()
+    ids_data = list()
+    messages = MsgContent.objects.filter(Q(ruid=myid) | Q(suid=myid)).annotate(no_of_messages = Count("ruid_id")).order_by("-postTime")
+
+    for x in messages:
+        if (x.suid_id == myid) and (x.ruid_id not in ids_data):
+            ids_data.append(x.ruid_id)
+            refined_data.append(x.ruid)
+        elif (x.ruid_id == myid) and (x.suid_id not in ids_data):
+            ids_data.append(x.suid_id)
+            refined_data.append(x.suid)
+
+    return refined_data
+
 def messaging(request , receiverId):
-    i = 0
-    mes = MsgContent.objects.filter(readStatus = 0).order_by("postTime")
-    for m in mes:
-        i = i+1
-    try:
-        request.session["username"]
-
-    except Exception as e:
-        return redirect("/login/")
-
+    userinfo = signup.objects.get(username = request.session["username"])
+    messages = MsgContent.objects.filter(Q(suid = receiverId , ruid=userinfo.uid) | Q(ruid = receiverId , suid=userinfo.uid)).order_by("postTime")
+    msgcount = len(messages)
+    peoples = messagefilter(userinfo.uid)
+    receicerName = signup.objects.get(uid = receiverId)
+    if receicerName.uid==userinfo.uid:
+        return redirect("/messages/")
     else:
-        peoples = signup.objects.all()
-        list = []
-        cou = 0
-        for people in peoples:
-            x =0
-            peopleId = people.uid
-            try:
-                counter = MsgContent.objects.filter(suid_id = peopleId , readStatus = 0).order_by("postTime")
-                for c in counter:
-                    x = x+1
-                    # print(c)
-                list.append(x)
-                people.id= list[cou]
-
-            except Exception as e:
-                people.date = ""
-                people.msg = ""
-            cou = cou +1
-        senderName = request.session["username"]
-        senderId = signup.objects.get(username = senderName).uid
-        receiverId = receiverId
-        receicerName = signup.objects.get(uid = receiverId)
-
-
-        messages = MsgContent.objects.filter(Q(ruid_id = receiverId ,suid_id = senderId)|Q(ruid_id = senderId ,suid_id = receiverId))
-
-        individualSum = 0
-        for m in messages:
-            # print(m.readStatus)
-            individualSum =individualSum+1
-            # print(individualSum)
-            # print("hi")
-        if request.method == "POST":
-            msgPosted = request.POST['msgPosted']
-            if msgPosted == "":
-                return redirect("/messages/")
-            else:
-                try:
-                    MsgContent.objects.create(message = msgPosted , ruid_id = receiverId , suid_id = senderId)
-                except Exception as e:
-                    return render(request , "messages/messages.html" , {"messages":messages, "i":i,"individualSum":individualSum ,"senderName":senderName,"peoples":peoples , "receicerName":receicerName})
-                else:
-                    messages = MsgContent.objects.filter(Q(ruid_id = receiverId ,suid_id = senderId)|Q(ruid_id = senderId ,suid_id = receiverId))
-                    messages.readStatus =True
-                    return render(request , "messages/messages.html" , {"messages":messages , "i":i,"individualSum":individualSum,"senderName":senderName,"peoples":peoples , "receicerName":receicerName})
-
+        if request.method=="POST":
+            MsgContent.objects.create(message = request.POST["msgPosted"],suid_id = userinfo.uid, ruid_id = receiverId)
+            messages = MsgContent.objects.filter(Q(suid = receiverId , ruid=userinfo.uid) | Q(ruid = receiverId , suid=userinfo.uid)).order_by("postTime")
+            msgcount = len(messages)
+            messages = MsgContent.objects.filter(Q(suid = receiverId , ruid=userinfo.uid) | Q(ruid = receiverId , suid=userinfo.uid)).order_by("postTime")
+            msgcount = len(messages)
+            peoples = messagefilter(userinfo.uid)
+            return render(request , "messages/messages.html" , {"messages":messages , "userinfo":userinfo, "individualSum":msgcount,"senderName":userinfo,"peoples":peoples , "receicerName":receicerName})
         else:
-            return render(request ,"messages/messages.html" ,{"messages":messages, "i":i ,"senderName":senderName,"individualSum":individualSum,"peoples":peoples , "receicerName":receicerName})
+            return render(request , "messages/messages.html" , {"messages":messages , "userinfo":userinfo, "individualSum":msgcount,"senderName":userinfo,"peoples":peoples , "receicerName":receicerName})

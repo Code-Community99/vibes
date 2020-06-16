@@ -4,7 +4,11 @@ from signup.models import signup
 
 
 class notif(models.Model):
-    pass
+    id = models.AutoField(primary_key = True)
+    source = models.ForeignKey(signup , on_delete = models.CASCADE , related_name = "source")
+    destination = models.ForeignKey(signup , on_delete = models.CASCADE , related_name = "destination")
+    message = models.CharField(max_length = 70)
+    notiftime = models.DateTimeField(auto_now_add = True)
 
     class Meta:
         db_table = "notifications"

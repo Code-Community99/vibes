@@ -6,5 +6,5 @@ app_name = "discover"
 
 urlpatterns = [
     url('^$' , views.discover , name = 'discover'),
-    url("^followBot/(?P<fid>[\d]*)/"  , views.followBot , name = "followBot"),
+    url("^followBot/"  , views.followBot , name = "followBot")
 ]

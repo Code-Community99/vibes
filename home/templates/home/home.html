@@ -1,84 +1,102 @@
 {% load static %}
 <!DOCTYPE html>
-<html >
+<html>
 <head>
 	<title>Vibes | Home</title>
-
-	<link rel="stylesheet" href="{% static 'home/styless.css' %}"/>
+	<link rel="stylesheet" href="{% static './home/styless.css' %}"/>
+	<!-- <link rel="stylesheet" href="../../static/home/styless.css"> -->
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 
 </head>
 <body>
-	 <nav>
 
-<!---add other links here-->
+	 <div class="">
+		 <nav>
+
+			 <div class = "dropdown">
+				 {% if loginstatus %}
+				 <div class="one">
+
+					 <button class = "create">
+						 <a href="{% url 'login:logout' %}">Signout</a>
+					 </button>
+
+				 </div>
+
+				 {% else %}
+				 		<div class="two">
+							<button class = "create">
+								<a href="{% url 'login:login' %}">Signin</a>
+
+							</button>
+							<button class = "create">
+								<a href="{% url 'signup:signup' %}">Signup</a>
+							</button>
+
+				 		</div>
+
+				 {% endif %}
+
+		</div>
+	  </nav>
+	 </div>
 
 
-
-  </nav>
   <div class = "LOGO">
 
   </div>
 
 
   <div class = "Desc">
-  	<p>
-   <img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo" vibes>
+	  <div id="photo">
+	   <img src="{% static 'home/images/logo.jpg' %}" alt="logo">
+		 <!-- <img src="../../static/home/images/logo.jpg" alt="logo"> -->
 
-</p>
-<div class= "welcome">
-	<h3>
-		Welcome to vibes .
-	</h3>
 	</div>
-   <div class = "dropdown">
-		 {% if loginstatus %}
-		 <button class = "create">
-			 <a href="{% url 'login:logout' %}">Signout</a>
-		 </button>
-		 {% else %}
-		 		<button class = "create">
-					<a href="{% url 'login:login' %}">Signin</a>
-				</button>
-				<button class = "create">
-					<a href="{% url 'signup:signup' %}">Signup</a>
-				</button>
 
-		 {% endif %}
-</div>
-
+	<div class="welcome">
+		<center>
+		<h3>
+			Welcome to Vibes
+		</h3>
+		</center>
+		</div>
 	<!--div class="Search">
 	 <input type="text" placeholder="Search on topics, find people and events" >
 
 	</div>-->
-  <div class ="row">
-  	<div class ="column">
-  		<div class = "card"> <!--img src="public/images/image1.jpg" alt="image" id="profile" >--> <br>
-  		Join Groups and engage in hottest topics with people around you<br>
-  	<button class = "Learn" onclick="window.location.href={% url 'groups:groups' %}"> Learn More</button>
-</div>
-  	</div>
-	<div class ="row">
-  	<div class ="column">
-  		<div class = "card">  <!--img src="public/images/239.jpg" alt="image" id="profile" vibes>--> <br>
-  		 You can buy quality products from people around you via vibes, the most effeciant way to do small scale business<br>
-  		<button class = "Learn" onclick="window.location.href={% url 'business:business' %}"> Learn More</button>
-</div>
-  	</div>
-  	<div class ="row">
-   	<div class ="column">
-  		<div class = "card">  <!--img src="public/images/pic.jpg" alt="image" id="profile" vibes>-->  <br>
-  		  Locate People around you and engage in general chats. To do it, you are recommended to  allow vibes to access your device location<br>
-  		<button class = "Learn" onclick="window.location.href={% url 'discover:discover' %}"> Learn More</button>
-</div>
-  	</div>
-  	 <div class ="row">
-  	<div class ="column">
-  		<div class = "card">  <!--img src="public/images/a.jpg" alt="image" id="profile" vibes>--> <br>
-  		 Find trending news,videos and events happenning right in your vicinity.<br><button class = "Learn"  onclick="window.location.href={% url 'home:home' %}"> Learn More</button>
- </div>
-  	</div>
-  	 </div>
+	  <div class ="row">
+	  	<div class ="column">
+	  		<div class = "card"> <!--img src="public/images/image1.jpg" alt="image" id="profile" >--> <br>
+			 Join Groups and engage in the hottest topics with people around you.<br>
+
+	  	<center><button class = "Learn" onclick="window.location.href={% url 'groups:groups' %}"> Learn more </button></center>
+			</div>
+		  	</div>
+
+	  	<div class ="column">
+	  		<div class = "card">  <!--img src="public/images/239.jpg" alt="image" id="profile" vibes>--> <br>
+	  		 Buy quality products from people around you via vibes.<br>
+	  		<center><button class = "Learn" onclick="window.location.href={% url 'business:business' %}"> Learn more </button></center>
+			</div>
+		 	 </div>
+
+	   	<div class ="column">
+	  		<div class = "card">  <!--img src="public/images/pic.jpg" alt="image" id="profile" vibes>-->  <br>
+				Locate People around you and engage in general chats. <br>
+	  		<center><button class = "Learn" onclick="window.location.href={% url 'discover:discover' %}"> Learn more </button></center>
+			</div>
+			  </div>
+
+	  	<div class ="column">
+	  		<div class = "card">  <!--img src="public/images/a.jpg" alt="image" id="profile" vibes>--> <br>
+			   Find trending news,videos and events happenning right in your vicinity.<br>
+			   <center><button class = "Learn"  onclick="window.location.href={% url 'home:home' %}"> Learn more </button></center>
+			 </div>
+	 		 	</div>
+	  	 </div>
+	</div>
+
 </body>
 <footer>
               <div class="row"><br><br>

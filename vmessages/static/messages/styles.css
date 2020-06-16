@@ -154,7 +154,7 @@ background-color:#1a1c1f;
 .chat .chat-history {
  padding: 30px 30px 20px;
  border-bottom: 2px solid white;
- overflow-y: scroll;
+ overflow-y: auto;
  /* height: 575px; */
 }
 .chat .chat-history .message-data {

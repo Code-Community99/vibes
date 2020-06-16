@@ -213,7 +213,7 @@ nav{
 	.Desc{
 		margin-top: 20px;
 	}
-	.form-hander~input{
+		.form-hander~input{
 			width: 70vw;
 		}
 }

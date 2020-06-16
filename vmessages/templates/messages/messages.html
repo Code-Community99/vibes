@@ -14,26 +14,10 @@
            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-          <link rel="stylesheet" href="/static/messages/messages.css">
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
           <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script type="text/javascript">
       function Display(){
-      //     let width = document.documentElement.clientWidth;
-      //   setTimeout(
-      //     function(){
-      //     if (width < 700){
-      //     document.getElementById('contacts').style.display="none";
-      //     document.getElementById('msgdisplay').style.display="inline-block";
-      //   }
-      //   else {
-      //     document.getElementById('msgdisplay').style.display="inline-block";
-      //     document.getElementById('contacts').style.display="inline-block";
-      //   }
-      //
-      // } , 300
-      //   );
-
       document.getElementById('contacts').classList.add('closed');
       document.getElementById('msgdisplay').classList.remove('closed');
       }
@@ -56,61 +40,42 @@
           </div>
           <div class="float-right">
             <!-- the unread message counter is inside sup tag -->
-            <h3 class="fas fa-envelope"></h3><sup class="success">{{i}}</sup></i>
+            <h3 class="fas fa-envelope"></h3><sup class="success">{{individualSum}}</sup></i>
             <i><p class="fas fa-map-marker"></p></i>
-<!--
-          </div>
-          <div class="col-6 ">
-              <form class="form-inline  " action="post">
-                <input class="form-control search " type="search" fa fa-search-plus placeholder="Search" aria-label="Search"><span>
-                <button class="btn btn-outline-success search-btn mr-0 float-right" type="submit">Search</button></span>
-                </form>
-
-          </div> -->
-
         </div>
       </header>
-
       <!-- <div class=""> -->
-                <div class="contacts contacts-bottom" id="contacts">
+          <div class="contacts contacts-bottom" id="contacts">
             {% for people in peoples %}
-            {% if people.username != senderName %}
-              <div class="card mb-0" style="max-width: height:250px;">
-                <div class="row no-gutters">
-                  <div class="col-md-4">
-                     <a href="{% url 'messaging:display'%}" ><img src="/media/{{people.profilepic}}" alt="profile" class="card-img"></a>
-                    <small class="online-status"><i class="fa fa-circle text-success mr-1"></i>Online</small>
-                  </div>
-                  <!-- notification card -->
-
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <div class="name">
-                      <h5 class="card-title float-left"><a onclick="Display()" href="{% url 'messaging:messaging' people.uid %}">{{people.username}}</a></h5>
-                      <button type="button" class="btn btn-primary badge float-right">{{people.id}}
-                       <span class="badge badge-light"></span>
-                      </button>
-                      <div class="clearfix"></div>
+                {% if people.username != senderName.username %}
+                  <div class="card mb-0" style="max-width: height:250px;">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                         <a href="{% url 'messaging:display'%}" ><img src="/media/{{people.profilepic}}" alt="profile" class="card-img"></a>
+                        <small class="online-status"><i class="fa fa-circle text-success mr-1"></i>Online</small>
                       </div>
-                      <p class="card-text">{{people.msg}}</p>
-                      <p class="card-text time"><small class="text-muted">{{people.date| date:"H:i"}}</small></p>
+                      <!-- notification card -->
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <div class="name">
+                          <h5 class="card-title float-left"><a onclick="Display()" href="{% url 'messaging:messaging' people.uid %}">{{people.username}}</a></h5>
+                          <button type="button" class="btn btn-primary badge float-right">{{people.signup_uid__count}}
+                           <span class="badge badge-light"></span>
+                          </button>
+                          <div class="clearfix"></div>
+                          </div>
+                          <p class="card-text">{{people.msg}}</p>
+                          <p class="card-text time"><small class="text-muted">{{people.date| date:"H:i"}}</small></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
               {% endif %}
-              {% endfor %}
+            {% endfor %}
               <div style="padding-top:100px;">
               </div>
           </div>
           <div class="px-0 profile-msg col-8 " id="msgdisplay">
-            <!-- <div class="profile col-12">
-
-            </div>
-            <div class="messages" col-12>
-
-
-            </div> -->
                   <div class="chat pt-0">
                       <div class="chat-header clearfix">
                         <img src="/media/{{receicerName.profilepic}}" class="msg_profile" alt="avatar" />
@@ -125,20 +90,19 @@
                       <div class="chat-history">
                         <ul>
                           {% for msg in messages %}
-                          {% if msg.suid.username == senderName %}
-                          <li class="clearfix">
-                            <div class="message-data align-right">
-                              <span class="message-data-time">{{msg.postTime}}</span> &nbsp; &nbsp;
-                              <span class="message-data-">{{msg.suid.username}}</span> <i class="fa fa-circle me"></i>
+                              {% if msg.suid.username == senderName.username %}
+                              <li class="clearfix">
+                                <div class="message-data align-right">
+                                  <span class="message-data-time">{{msg.postTime}}</span> &nbsp; &nbsp;
+                                  <span class="message-data-">{{msg.suid.username}}</span> <i class="fa fa-circle me"></i>
 
-                            </div>
-                            <div class="message other-message float-right">
-                              {{msg.message}}
-                            </div>
-                          </li>
+                                </div>
+                                <div class="message other-message float-right">
+                                  {{msg.message}}
+                                </div>
+                              </li>
 <!-- receicer chat -->
                         {% else %}
-
                           <li>
                             <div class="message-data">
                               <span class="message-data-"><i class="fa fa-circle online"></i>{{receicerName.username}}</span>
@@ -151,18 +115,16 @@
                         {% endif %}
                       {% endfor %}
                         </ul>
+                      </div>
+                      <!-- end chat-history -->
 
-                      </div> <!-- end chat-history -->
-
-                    </div> <!-- end chat -->
-
-
+                    </div>
+                    <!-- end chat -->
             <div class="new_message">
               <form action="" method="POST" action="{% url 'messaging:display' %}">
                 {% csrf_token %}
                 <div class="input-group">
                   <input class="form-control" placeholder="Type Message..." name="msgPosted">
-
                   <button class="btn btn-success">
                     <i class="fa fa-chat mr-1"></i>Send
                   </button>
@@ -171,13 +133,11 @@
             </div>
           </div>
       </div>
-
       <style>
         @media(max-width:700px){
           .contacts{
             display: none;
           }
-
           #msgdisplay{
             display: block;
           }

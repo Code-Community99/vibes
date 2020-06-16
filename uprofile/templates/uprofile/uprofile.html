@@ -59,7 +59,7 @@
         <h6 class="text-success">online</h6>
         <div class="abt-user"><br>
           <p>
-            <span class="fa fa-envelope">15 </span> <a href="{% url 'messaging:display' %}">Messages</a>
+            <span class="fa fa-envelope">{{newmessages}} </span> <a href="{% url 'messaging:display' %}">Messages</a>
           </p>
 
           <p>
@@ -74,7 +74,7 @@
         </div>
         <center>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 main-frame">
         <center>
           <h4>Events</h4>
         </center>
