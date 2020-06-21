@@ -119,7 +119,11 @@ input[type="submit"]{
 	font-size: 16px;
 	border-radius: 2px;
 }
-
+.group{
+	width: 100%;
+	text-align: center;
+	min-width: 180px;
+}
 .dropdown{
 	position: relative;
 	display: inline-block;
@@ -232,7 +236,11 @@ nav{
 		}
 	.bottom{
 	margin-top: 20px;	
-	}
+
+}
+.group{
+	width: 65%;
+}
 }
 #photo{
 	width: 100px;
