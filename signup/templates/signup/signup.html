@@ -12,8 +12,9 @@
 <body>
 <!-- left image background -->
 <div class="left-part">
-<img src="{% static 'signup/images/network.jpg' %}" alt="network background image">
+<img src="{% static 'signup/images/network.jpg' %}" class="leftImage" alt="network background image">
 </div>
+
 <div class="right-part">
 			<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo">
 				<form action="{% url 'signup:signup' %}" method="post"  id="mysub" class="formClass" enctype="multipart/form-data">

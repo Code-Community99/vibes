@@ -10,7 +10,7 @@
 /* new styles */
 body{
 	display: flex;
-	background-color:#f0f0f0;
+	background-color:#fcfcfc;
 	min-height: 100vh;
 }
 .left-part{
@@ -34,7 +34,8 @@ body{
     justify-content: space-around;
     align-items: center;
     flex-grow: .7;
-    width: 100%;
+	width: 100%;
+	position: relative;
 }
 .details{
 	flex-grow: .6;
@@ -59,22 +60,24 @@ body{
 	text-align: center;
 }
 .inputlabel{
-	font-size: 15px;
-	color: rgb(24, 112, 117);
-	    font-weight: 500;
-    letter-spacing: .5px;
+	
+	color: red;
+    width: max-content;
+    top: 12%;
     position: absolute;
-    top: -10px;
-    left: 5%;
-    background-color: #fff;
-	padding: 0px 5px;
+    background: none;
 
+}
+.leftImage{
+	animation: trans 50s 0s ease-in forwards;
 }
 .animate{
 	animation: labelAnime 7s .1s ease-in-out forwards;
 
 }
-
+.input:active{
+	background-color: white;
+}
 .sign{
 	width: 50%;
 	margin: 10px;
@@ -93,7 +96,7 @@ background:#116066;
 }
 .validation{
 	color: #187075;
-	    font-weight: 500;
+	    font-weight: 600;
     letter-spacing: .5px;
 	font-size: 15px;
 
@@ -108,7 +111,9 @@ background:#116066;
 	width: 100%;
 	border: none;
 	outline: none;
-	background: #fff;
+	background-color: #fff! important;
+	padding: 0;
+	margin: 0;
 }
 input{
 	background-color: #fff;
@@ -116,8 +121,10 @@ input{
 
 
 
+
+
 a{
-	color: #456;
+	color: #28b5e0;
 	text-decoration:none;
 	font-weight:bold;
 }
@@ -128,7 +135,6 @@ a{
 }
 
 #forgot{
-	margin-left: 60%;
 	color: #0f0;
 
 }
@@ -191,9 +197,8 @@ button{
 	height: 100px;
 	border-radius:50%;
 	background: green;
-	position:center;
-
 	border: 2px solid #3399ff;
+	margin: 0;
 }
 
 .snap {
@@ -228,6 +233,14 @@ button{
 	border:3px solid grey;
 	border-top: 3px solid #add8e6;
 	animation: spinneranim 3s  infinite;
+}
+@keyframes trans{
+	0%{
+		transform: scale(1.2);
+	}
+	100%{
+		transform: none;
+	}
 }
 
 @keyframes spinneranim {
@@ -271,11 +284,11 @@ opacity: 0;
 		flex-grow: 1;
 	}
 	.right-part{
-
 		color: #fff;
 		width: 100%;
 		background: url("../signup/images/network.jpg");
 		background-size: cover;
+		background-position: bottom;
 	}
 	.input {
 		width: 88%;

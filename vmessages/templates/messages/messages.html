@@ -9,8 +9,12 @@
     <!-- <link rel="stylesheet" href="bootstrap.css"> -->
     <link rel="stylesheet" href="{% static 'messages/styles.css' %}">
     <!-- online links -->
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+           -->
+           <link rel="stylesheet" href="E:/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+
+
            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -47,8 +51,8 @@
       <!-- <div class=""> -->
           <div class="contacts contacts-bottom" id="contacts">
             {% for people in peoples %}
-                {% if people.username != senderName.username %}
-                  <div class="card mb-0" style="max-width: height:250px;">
+                {% if people.username != senderName %}
+                  <div class="card mb-0" style="height:250px;">
                     <div class="row no-gutters">
                       <div class="col-md-4">
                          <a href="{% url 'messaging:display'%}" ><img src="/media/{{people.profilepic}}" alt="profile" class="card-img"></a>

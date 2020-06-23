@@ -4,38 +4,65 @@
 <head>
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<title>Vibes | Login</title>
-	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'login/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'signup/styles.css' %}">
+
 </head>
 
 <body>
+	<!-- left image background -->
+<div class="left-part">
+	<img src="{% static 'signup/images/network.jpg' %}" class="leftImage" alt="network background image">
+	</div>
+
+<!-- 	
+	how code was originally
 	<p>
 		<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo" vibes>
 
 	</p>
 	<div class="bon">
-		<div class="bony">
+		<div class="bony"> -->
 
-	<form action="{% url 'login:login' %}" method="POST" class="form-hander">
+			<!-- adding a right section -->
+			<div class="right-part">
+				<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo">
+
+	<form action="{% url 'login:login' %}" method="POST" class="formClass">
 		{% csrf_token %}
-		<h3> Login Here</h3>
+		<!-- <h3> Login Here</h3> -->
+		<div class="join">
+			Login Here
+		</div>
 
 		{% for error in error_log %}
 		<label class="inputlabel">
 			{{error}}
 		</label>
 		{% endfor %}
-		<input type="text" placeholder="username" name = "username" id="username" required class="input">
+		<div class="inputDiv">
 
+		<input type="text" placeholder="username" name = "username" id="username" required class="input">
+			
+	</div>
+
+		<div class="inputDiv">
 		<input type="password" placeholder="password" name = "password" id="password" required class="input">
-		<p>
+		</div>
+		
+	<div class="group">
 				<div class="keepme">
 					<input type="checkbox" id="keepme">
-					<label for="keepme">keep me signed in</label>
+					<label for="keepme">Keep me signed in</label>
 				</div>
 
-			</p>
-		<input type="submit" value="login" class="input">
+			
+		<input type="submit" value="login" class="input-btn">
+	</div>
 
+		<div class="bottom">
 		<div class=""  id="forgot">
 			<a href="{% url 'login:forgot' %}">
 					<b>forgot password?</b>
@@ -48,8 +75,8 @@
 			<a class="link" href="{% url 'signup:signup' %}">
 				<b>Signup</b>
 			</a>
-
 		</p>
+		</div>
 	</form>
 	</div>
 </div>
