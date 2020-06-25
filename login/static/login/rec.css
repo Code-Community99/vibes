@@ -1,0 +1,18 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+#photo{
+    border-radius: 50%;
+}
+.bon{
+    height: unset;
+    width: unset;
+    margin: 0;
+    padding: unset;
+    border: none;
+    background: none;
+}
