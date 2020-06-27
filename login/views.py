@@ -2,7 +2,7 @@ from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from signup.models import signup
 import smtplib,string,random
-# import validate_email as v
+import validate_email as v
 from django.contrib.auth.hashers import check_password,make_password
 
 
