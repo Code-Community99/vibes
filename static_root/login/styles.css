@@ -67,6 +67,8 @@ padding-top:10px;
 } */
 .inputlabel
 {
+	top: 39px;
+    z-index: 5;
 	display: block;
 	width: 100%;
 	padding: 10px ;
