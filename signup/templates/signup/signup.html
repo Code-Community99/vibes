@@ -152,7 +152,7 @@ var validate_data = {
 			if(this.readyState == 4 && this.status == 200){
 				if(this.responseText == "true"){
 					document.getElementById("emailvalid").innerHTML = "email in use by other account";
-					document.getElementById("emailvalid").style.color = "#f00";
+					document.getElementById("emailvalid").style.color = "#ff0000";
 				}
 
 				else if(this.responseText == "false"){
