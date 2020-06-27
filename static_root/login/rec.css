@@ -1,0 +1,39 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#photo{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.bon{
+    height: unset;
+    width: unset;
+    margin: 0;
+    padding: unset;
+    border: none;
+    background: none;
+}
+.input-email{
+    border: none;
+    background-color: #fdfdfd;
+    box-shadow: 1px 3px 9px 0px #00000036;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 30px;
+    max-width: 300px;
+    padding: 8px;
+    width: 100%;
+}
+.link {
+    color: #084eec;
+}
+.hef{
+    color: #084eec;
+}

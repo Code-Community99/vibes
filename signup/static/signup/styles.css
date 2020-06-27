@@ -59,11 +59,11 @@ body{
 .inputDiv >input {
 	text-align: center;
 }
-.inputlabel{
-	
+.inputlabel-sign{
+	z-index: 4;
 	color: red;
     width: max-content;
-    top: 12%;
+    top:0;
     position: absolute;
     background: none;
 
