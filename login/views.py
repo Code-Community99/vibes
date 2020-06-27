@@ -4,9 +4,6 @@ from signup.models import signup
 import smtplib,string,random
 import validate_email as v
 from django.contrib.auth.hashers import check_password,make_password
-
-
-
 def login(request):
     try:
         request.session["username"]
