@@ -6,51 +6,39 @@
 	<title>Vibes | account recovery</title>
 	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
 	<link rel="stylesheet" href="{% static 'login/rec.css' %}"/>
-
 </head>
-
 <body>
 	<p>
 		<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo" vibes>
-
 	</p>
 	<div class="bon">
 		<div class="bony">
+			<form action="{% url 'login:forgot' %}" method="POST">
+				{% csrf_token %}
+				<h3>Enter recovery email</h3>
+				{% for errors in error %}
+				<label class="inputlabel">
+					{{errors}}
+				</label>
+				{% endfor %}
+				<input type="email" placeholder="Enter email" name = "email" id="username" required class="input-email" autocomplete>
+				<p>
+					</p>
+				<input type="submit" value="Recover" class="input">
+				<div class=""  id="forgot">
+					<a href="{% url 'login:login' %}" class="hef">
+							<b>Login instead?</b>
+					</a>
+				</div>
+				<p style="text-align:center">
+					<span>New member?</span>
 
-	<form action="{% url 'login:forgot' %}" method="POST">
+					<a class="link" href="{% url 'signup:signup' %}">
+						<b>Signup</b>
+					</a>
 
-		{% csrf_token %}
-		<h3>Enter recovery email</h3>
-
-
-
-		{% for errors in error %}
-		<label class="inputlabel">
-			{{errors}}
-		</label>
-		{% endfor %}
-		<input type="email" placeholder="Enter email" name = "email" id="username" required class="input-email" autocomplete>
-
-		<p>
-
-			</p>
-		<input type="submit" value="Recover" class="input">
-
-		<div class=""  id="forgot">
-			<a href="{% url 'login:login' %}" class="hef">
-					<b>Login instead?</b>
-			</a>
-		</div>
-
-		<p style="text-align:center">
-			<span>New member?</span>
-
-			<a class="link" href="{% url 'signup:signup' %}">
-				<b>Signup</b>
-			</a>
-
-		</p>
-	</form>
+				</p>
+			</form>
 	</div>
 </div>
 
