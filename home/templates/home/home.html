@@ -6,54 +6,37 @@
 	<link rel="stylesheet" href="{% static './home/styless.css' %}"/>
 	<!-- <link rel="stylesheet" href="../../static/home/styless.css"> -->
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-
 </head>
 <body>
-
 	 <div class="">
 		 <nav>
-
 			 <div class = "dropdown">
 				 {% if loginstatus %}
 				 <div class="one">
-
 					 <button class = "create">
 						 <a href="{% url 'login:logout' %}">Signout</a>
 					 </button>
-
 				 </div>
-
 				 {% else %}
 				 		<div class="two">
 							<button class = "create">
 								<a href="{% url 'login:login' %}">Signin</a>
-
 							</button>
 							<button class = "create">
 								<a href="{% url 'signup:signup' %}">Signup</a>
 							</button>
-
 				 		</div>
-
 				 {% endif %}
-
 		</div>
 	  </nav>
 	 </div>
-
-
   <div class = "LOGO">
-
   </div>
-
-
   <div class = "Desc">
 	  <div id="photo">
 	   <img src="{% static 'home/images/logo.jpg' %}" alt="logo">
 		 <!-- <img src="../../static/home/images/logo.jpg" alt="logo"> -->
-
 	</div>
-
 	<div class="welcome">
 		<center>
 		<h3>

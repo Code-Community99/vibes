@@ -83,14 +83,14 @@ def forgotcredetials(request):
                     message = MIMEText( message, "html")
                     mess.attach(message)
                     try:
-                        obj=sm.SMTP('smtp.gmail.com', 587)
+                        obj=smtplib.SMTP('smtp.gmail.com', 587)
                         obj.starttls()
                         obj.login("anornymous99@gmail.com","xcmbyzwvy")
                         obj.sendmail(sender,receiver,mess.as_string())
                         obj.close()
                     except Exception as error:
-                        print("Error: {}".format(error))
                         bug_hunter.append("Connection could not be established")
+                        print("Errors;;;;;%s"%(error))
                         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 
                     else:
